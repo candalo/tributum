@@ -12,6 +12,7 @@ public class PessoaJuridica extends Colaborador{
     
     private String cnpj;
     private double valorHoraTrabalho;
+    private double salarioBruto;
     
     public PessoaJuridica(String nome, String endereco, String telefone,
                           String cnpj, double valorHoraTrabalho) {
@@ -111,5 +112,15 @@ public class PessoaJuridica extends Colaborador{
     
     public void setValorHoraTrabalho(double valorHoraTrabalho) {
         this.valorHoraTrabalho = valorHoraTrabalho;
+    }
+    
+    public double calcularSalarioBruto(short horasTrabalhadas) throws Exception {
+        if(horasTrabalhadas >= 0) {
+            this.salarioBruto = this.valorHoraTrabalho * horasTrabalhadas;
+            return this.salarioBruto;
+        }
+        else {
+            throw new Exception("Valor de horas trabalhadas deve ser maior ou igual a 0");
+        }
     }
 }
