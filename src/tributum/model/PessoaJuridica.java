@@ -15,6 +15,7 @@ public class PessoaJuridica extends Colaborador{
     private double salarioBruto;
     private double irrf;
     private double pisCofCsll;
+    private double iss;
     
     public PessoaJuridica(String nome, String endereco, String telefone,
                           String cnpj, double valorHoraTrabalho) {
@@ -138,5 +139,14 @@ public class PessoaJuridica extends Colaborador{
             this.pisCofCsll = 0;
         
         return this.pisCofCsll;
+    }
+    
+    public double calcularIss() {
+        if(this.salarioBruto > 5000.0)
+            this.iss = 0.04 * this.salarioBruto;
+        else
+            this.iss = 0;
+        
+        return this.iss;
     }
 }
