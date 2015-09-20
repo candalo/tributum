@@ -13,6 +13,7 @@ public class PessoaJuridica extends Colaborador{
     private String cnpj;
     private double valorHoraTrabalho;
     private double salarioBruto;
+    private double irrf;
     
     public PessoaJuridica(String nome, String endereco, String telefone,
                           String cnpj, double valorHoraTrabalho) {
@@ -122,5 +123,10 @@ public class PessoaJuridica extends Colaborador{
         else {
             throw new Exception("Valor de horas trabalhadas deve ser maior ou igual a 0");
         }
+    }
+    
+    public double calcularIrrf() {
+        this.irrf = 0.015 * this.salarioBruto;
+        return this.irrf;
     }
 }
