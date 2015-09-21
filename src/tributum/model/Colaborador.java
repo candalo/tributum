@@ -1,25 +1,10 @@
-<<<<<<< HEAD
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package model;
-
-/**
- *
- * @author fec.6453355881
- */
-public class Colaborador {
-    
-}
-=======
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package tributum.model;
+
 
 public abstract class Colaborador 
 {
@@ -74,4 +59,4 @@ public abstract class Colaborador
                telefone.matches(".((10)|([1-9][1-9]).)\\s[2-5][0-9]{3}-[0-9]{4}");
    }
 }
->>>>>>> 698da0955faaf5e94b2eed28131bd612ebec6dea
+
