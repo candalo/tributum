@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package tributum.model;
 
 /**
  *
@@ -60,7 +60,7 @@ public class Celetista extends Colaborador implements IConstants {
             return this.getSalarioMensal();
         }
         else{
-            return (this.getSalarioMensal()/hoursWorking) * (hoursWork - hoursWorking);
+            return (this.getSalarioMensal()/hoursWork) * (hoursWork - hoursWork);
         }
     }
     
@@ -131,7 +131,7 @@ public class Celetista extends Colaborador implements IConstants {
      */
     public boolean validarCpf(String cpf) throws NumberFormatException{
         String noneToken;
-        int[] computeCpf = new int[lenghtCpf];
+        int[] computeCpf = new int[cpf.length()];
         int[] digCpf = new int[2];
         int auxSumCpf;
         noneToken = cpf;
@@ -143,7 +143,7 @@ public class Celetista extends Colaborador implements IConstants {
         noneToken = noneToken.trim();
         
         //Convert as substring em valores inteiros
-        for(int count = 0; count < lenghtCpf;count++){
+        for(int count = 0; count < cpf.length();count++){
             computeCpf[count] = Integer.parseInt(cpf.substring(count, count));
         }
         
