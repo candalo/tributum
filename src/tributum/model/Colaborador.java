@@ -6,17 +6,17 @@
 package tributum.model;
 
 
-public abstract class Colaborador 
+public abstract class Colaborador
 {
    private String nome;
    private String endereco;
    private String telefone;
    
-   public Colaborador(String nome, String endereco, String telefone)
+   public Colaborador(String nome, String endereco, String telefone) throws Exception
    {
         this.nome     = nome;
         this.endereco = endereco;
-        this.telefone = telefone; 
+        setTelefone(telefone);
    } 
    
    public String getNome()
