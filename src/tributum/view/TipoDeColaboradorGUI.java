@@ -12,7 +12,7 @@ import javax.swing.ButtonGroup;
  * @author lucas
  */
 public class TipoDeColaboradorGUI extends javax.swing.JFrame {
-
+    public static int botaoAtivo;
     /**
      * Creates new form TipoDeColaboradorGUI
      */
@@ -51,6 +51,7 @@ public class TipoDeColaboradorGUI extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("Tipo de Colaborador");
 
+        celetistaRadioButton.setSelected(true);
         celetistaRadioButton.setText("Celetista");
         celetistaRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,14 +105,24 @@ public class TipoDeColaboradorGUI extends javax.swing.JFrame {
 
     private void celetistaRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_celetistaRadioButtonActionPerformed
         // TODO add your handling code here:
+        if(celetistaRadioButton.isSelected()){
+            pjRadioButton.setSelected(false);
+            botaoAtivo = 1;
+        } 
     }//GEN-LAST:event_celetistaRadioButtonActionPerformed
 
     private void pjRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pjRadioButtonActionPerformed
         // TODO add your handling code here:
+        if(pjRadioButton.isSelected()){
+            celetistaRadioButton.setSelected(false);
+            botaoAtivo = 2;
+        }
     }//GEN-LAST:event_pjRadioButtonActionPerformed
 
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
         // TODO add your handling code here:
+        MenuGUI menuGui = new MenuGUI();
+        menuGui.setVisible(true);        
     }//GEN-LAST:event_confirmButtonActionPerformed
 
     /**
