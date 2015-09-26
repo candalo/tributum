@@ -173,6 +173,10 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
         
         MenuGUI menuGui = new MenuGUI();
         menuGui.setVisible(true);
+        
+        // Fecha tela atual
+        setVisible(false);
+        dispose();
     }//GEN-LAST:event_cadastrarButtonActionPerformed
 
     /**
