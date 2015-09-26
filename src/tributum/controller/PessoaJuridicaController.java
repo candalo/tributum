@@ -38,15 +38,21 @@ public class PessoaJuridicaController {
         pjHelper.setValorHoraTrabalho(valorHoraTrabalho);
     }
     
-    public static void setHorasTrabalhadas(short horasTrabalhadas) {
-        pjHelper.setValorHoraTrabalho(horasTrabalhadas);
+    public static void calcularImpostos(short horasTrabalhadas) {
+        try {
+            pjHelper.calcularSalarioBruto(horasTrabalhadas);
+        }catch(Exception e) {}
+        pjHelper.calcularIrrf();
+        pjHelper.calcularIss();
+        pjHelper.calcularPisCofCsll();
+        pjHelper.calcularSalarioLiquido();
     }
     
     public static void setPessoaJuridica(PessoaJuridica pj) {
         PessoaJuridicaController.pjHelper = pj;
     }
     
-    public static PessoaJuridica getPessoa() {
+    public static PessoaJuridica getPessoaJuridica() {
         return PessoaJuridicaController.pjHelper;
     }
 }

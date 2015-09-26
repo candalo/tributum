@@ -6,6 +6,7 @@
 package tributum.view;
 
 import tributum.controller.PessoaJuridicaController;
+import tributum.model.PessoaJuridica;
 
 /**
  *
@@ -14,13 +15,22 @@ import tributum.controller.PessoaJuridicaController;
 public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
     
     private short horasTrabalhadas;
+    private PessoaJuridica pj = PessoaJuridicaController.getPessoaJuridica();
     /**
      * Creates new form FolhaDePagamentoPJGUI
      */
     public FolhaDePagamentoPJGUI() {
         initComponents();
     }
-
+    
+    private void exibeDados() {
+        valorBrutoJLabel.setText(Double.toString(pj.getSalarioBruto()));
+        irrfJLabel.setText(Double.toString(pj.getIrrf()));
+        pisCofCsllJLabel.setText(Double.toString(pj.getPisCofCsll()));
+        issJLabel.setText(Double.toString(pj.getIss()));
+        salarioLiqJLabel.setText(Double.toString(pj.getSalarioLiquido()));
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,10 +47,13 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        valorBrutoTextField = new javax.swing.JTextField();
-        irffTextField = new javax.swing.JTextField();
-        pisCofIsllTextField = new javax.swing.JTextField();
-        issTextField = new javax.swing.JTextField();
+        valorBrutoJLabel = new javax.swing.JLabel();
+        irrfJLabel = new javax.swing.JLabel();
+        pisCofCsllJLabel = new javax.swing.JLabel();
+        issJLabel = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        salarioLiqJLabel = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,27 +80,12 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
 
         jLabel5.setText("ISS:");
 
-        valorBrutoTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                valorBrutoTextFieldActionPerformed(evt);
-            }
-        });
+        jLabel6.setText("Salário Líquido:");
 
-        irffTextField.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Voltar para o menu");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                irffTextFieldActionPerformed(evt);
-            }
-        });
-
-        pisCofIsllTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pisCofIsllTextFieldActionPerformed(evt);
-            }
-        });
-
-        issTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                issTextFieldActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -108,14 +106,19 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(jLabel4)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel6)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(valorBrutoTextField)
-                            .addComponent(irffTextField)
-                            .addComponent(pisCofIsllTextField)
-                            .addComponent(issTextField))))
-                .addContainerGap(136, Short.MAX_VALUE))
+                            .addComponent(valorBrutoJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(irrfJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pisCofCsllJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(issJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(salarioLiqJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,31 +129,33 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
                     .addComponent(horastrabTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(calcularTextField)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(valorBrutoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(valorBrutoJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(irrfJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pisCofCsllJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(issJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(irffTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6)
+                    .addComponent(salarioLiqJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(pisCofIsllTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(issTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19))
+                .addComponent(jButton1)
+                .addGap(28, 28, 28))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void irffTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irffTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_irffTextFieldActionPerformed
 
     private void horastrabTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horastrabTextFieldActionPerformed
         // TODO add your handling code here:
@@ -159,21 +164,25 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
     private void calcularTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularTextFieldActionPerformed
         
         horasTrabalhadas = Short.parseShort(this.horastrabTextField.getText());
-        PessoaJuridicaController.setHorasTrabalhadas(horasTrabalhadas);
-       
+        
+        //Chama o método que ira calcular os impostos
+        PessoaJuridicaController.calcularImpostos(horasTrabalhadas);
+        
+        // Exibe os valores na tela
+        exibeDados();
+        
     }//GEN-LAST:event_calcularTextFieldActionPerformed
 
-    private void valorBrutoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorBrutoTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_valorBrutoTextFieldActionPerformed
-
-    private void pisCofIsllTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pisCofIsllTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pisCofIsllTextFieldActionPerformed
-
-    private void issTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_issTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_issTextFieldActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        // Volta para a tela de menu
+        MenuGUI menuGui = new MenuGUI();
+        menuGui.setVisible(true);
+        
+        // Fecha tela atual
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,14 +225,17 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton calcularTextField;
     private javax.swing.JTextField horastrabTextField;
-    private javax.swing.JTextField irffTextField;
-    private javax.swing.JTextField issTextField;
+    private javax.swing.JLabel irrfJLabel;
+    private javax.swing.JLabel issJLabel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField pisCofIsllTextField;
-    private javax.swing.JTextField valorBrutoTextField;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel pisCofCsllJLabel;
+    private javax.swing.JLabel salarioLiqJLabel;
+    private javax.swing.JLabel valorBrutoJLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -16,6 +16,7 @@ public class PessoaJuridica extends Colaborador{
     private double irrf;
     private double pisCofCsll;
     private double iss;
+    private double salarioLiquido;
     
     public PessoaJuridica(String nome, String endereco, String telefone,
                           String cnpj, double valorHoraTrabalho) throws Exception{
@@ -127,8 +128,16 @@ public class PessoaJuridica extends Colaborador{
         }
     }
     
+    public double getSalarioBruto() {
+        return this.salarioBruto;
+    }
+    
     public double calcularIrrf() {
         this.irrf = 0.015 * this.salarioBruto;
+        return this.irrf;
+    }
+    
+    public double getIrrf() {
         return this.irrf;
     }
     
@@ -141,6 +150,10 @@ public class PessoaJuridica extends Colaborador{
         return this.pisCofCsll;
     }
     
+    public double getPisCofCsll() {
+        return this.pisCofCsll;
+    }
+    
     public double calcularIss() {
         if(this.salarioBruto > 5000.0)
             this.iss = 0.04 * this.salarioBruto;
@@ -148,5 +161,20 @@ public class PessoaJuridica extends Colaborador{
             this.iss = 0;
         
         return this.iss;
+    }
+    
+    public double getIss() {
+        return this.iss;
+    }
+    
+    public void calcularSalarioLiquido() {
+        this.salarioLiquido = this.salarioBruto -
+                              this.irrf -
+                              this.pisCofCsll -
+                              this.iss;
+    }
+    
+    public double getSalarioLiquido() {
+        return this.salarioLiquido;
     }
 }
