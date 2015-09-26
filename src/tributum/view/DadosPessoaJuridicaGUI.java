@@ -167,10 +167,10 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_valorGHTextFieldActionPerformed
 
     private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
-        PessoaJuridicaController pjController = new PessoaJuridicaController();
+  
+        PessoaJuridicaController.gravarPessoaJuridica(this, pessoa);
         
-        pjController.gravarPessoaJuridica(this, pessoa);
-        
+        // Vai para a proxima tela
         MenuGUI menuGui = new MenuGUI();
         menuGui.setVisible(true);
         

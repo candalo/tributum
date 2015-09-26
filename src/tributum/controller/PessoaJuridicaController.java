@@ -16,7 +16,7 @@ public class PessoaJuridicaController {
     
     private static PessoaJuridica pjHelper;
     
-    public void gravarPessoaJuridica(DadosPessoaJuridicaGUI dadosPJ, PessoaJuridica pj) {
+    public static void gravarPessoaJuridica(DadosPessoaJuridicaGUI dadosPJ, PessoaJuridica pj) {
         try {
             pj = new PessoaJuridica(dadosPJ.nomePjTextField.getText(),
                                     dadosPJ.enderecoPjTextField.getText(),
