@@ -53,7 +53,7 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
         issJLabel = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         salarioLiqJLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        voltarMenuButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,10 +82,10 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
 
         jLabel6.setText("Salário Líquido:");
 
-        jButton1.setText("Voltar para o menu");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        voltarMenuButton.setText("Voltar para o menu");
+        voltarMenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                voltarMenuButtonActionPerformed(evt);
             }
         });
 
@@ -108,7 +108,7 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
                             .addComponent(jLabel6)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(voltarMenuButton, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(valorBrutoJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -150,7 +150,7 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(salarioLiqJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(voltarMenuButton)
                 .addGap(28, 28, 28))
         );
 
@@ -173,7 +173,7 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_calcularTextFieldActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void voltarMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarMenuButtonActionPerformed
         
         // Volta para a tela de menu
         MenuGUI menuGui = new MenuGUI();
@@ -182,7 +182,7 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
         // Fecha tela atual
         setVisible(false);
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_voltarMenuButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,7 +227,6 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
     private javax.swing.JTextField horastrabTextField;
     private javax.swing.JLabel irrfJLabel;
     private javax.swing.JLabel issJLabel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -237,5 +236,6 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
     private javax.swing.JLabel pisCofCsllJLabel;
     private javax.swing.JLabel salarioLiqJLabel;
     private javax.swing.JLabel valorBrutoJLabel;
+    private javax.swing.JButton voltarMenuButton;
     // End of variables declaration//GEN-END:variables
 }
