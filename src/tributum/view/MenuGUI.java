@@ -12,7 +12,16 @@ import javax.swing.ButtonGroup;
  * @author lucas
  */
 public class MenuGUI extends javax.swing.JFrame {
-
+    
+    SalarioCeletistaGUI salarioCeletistaGui = new SalarioCeletistaGUI();
+    FolhaDePagamentoCeletistaGUI folhaDePagamentoCeletistaGui 
+            = new FolhaDePagamentoCeletistaGUI();
+    
+    SalarioPJGUI salarioPJGui = new SalarioPJGUI();
+    FolhaDePagamentoPJGUI folhaDePagamentoPJGui
+            = new FolhaDePagamentoPJGUI();
+    
+    
     /**
      * Creates new form MenuGUI
      */
@@ -30,7 +39,14 @@ public class MenuGUI extends javax.swing.JFrame {
         
         bg1.add(alteracaoPgtoRadioButton);
         bg1.add(calculoPgtoRadioButton);
+    }    
+    
+    private void fechaTelaAtual() {
+        // Fecha tela atual
+        setVisible(false);
+        dispose();
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -115,13 +131,38 @@ public class MenuGUI extends javax.swing.JFrame {
     private void calculoPgtoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculoPgtoRadioButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_calculoPgtoRadioButtonActionPerformed
-
+    
+    /* Essa tela eh usada tanto para Celetistas quanto para Pessoa Juridica.
+     * Por conta disso eh necessario definir qual desses 
+     * dois tipos estão em execução 
+     */
     private void confirmarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarButtonActionPerformed
-        // TODO add your handling code here:
+        // Caso seja celetista
+        if(TipoDeColaboradorGUI.botaoAtivo == 1) {
+            if(alteracaoPgtoRadioButton.isSelected()) {
+                salarioCeletistaGui.setVisible(true);
+                fechaTelaAtual();
+            }
+            else {
+                folhaDePagamentoCeletistaGui.setVisible(true);
+                fechaTelaAtual();
+            }
+        }
+        // Caso seja PJ
+        else {
+            if(alteracaoPgtoRadioButton.isSelected()) {
+                salarioPJGui.setVisible(true);
+                fechaTelaAtual();
+            }
+            else {
+                folhaDePagamentoPJGui.setVisible(true);
+                fechaTelaAtual();
+            }
+        }
     }//GEN-LAST:event_confirmarButtonActionPerformed
 
     private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed
-        // TODO add your handling code here:
+        System.exit(1);
     }//GEN-LAST:event_sairButtonActionPerformed
 
     /**
