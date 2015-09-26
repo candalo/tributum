@@ -34,6 +34,10 @@ public class PessoaJuridicaController {
         pjHelper.setValorHoraTrabalho(valorHoraTrabalho);
     }
     
+    public static void setHorasTrabalhadas(short horasTrabalhadas) {
+        pjHelper.setValorHoraTrabalho(horasTrabalhadas);
+    }
+    
     public static void setPessoaJuridica(PessoaJuridica pj) {
         PessoaJuridicaController.pjHelper = pj;
     }

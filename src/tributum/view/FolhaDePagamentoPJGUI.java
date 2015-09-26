@@ -5,12 +5,15 @@
  */
 package tributum.view;
 
+import tributum.controller.PessoaJuridicaController;
+
 /**
  *
  * @author lucas
  */
 public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
-
+    
+    private short horasTrabalhadas;
     /**
      * Creates new form FolhaDePagamentoPJGUI
      */
@@ -154,7 +157,10 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_horastrabTextFieldActionPerformed
 
     private void calcularTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularTextFieldActionPerformed
-        // TODO add your handling code here:
+        
+        horasTrabalhadas = Short.parseShort(this.horastrabTextField.getText());
+        PessoaJuridicaController.setHorasTrabalhadas(horasTrabalhadas);
+       
     }//GEN-LAST:event_calcularTextFieldActionPerformed
 
     private void valorBrutoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorBrutoTextFieldActionPerformed
