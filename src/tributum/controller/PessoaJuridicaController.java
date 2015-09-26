@@ -17,7 +17,11 @@ public class PessoaJuridicaController {
     private static PessoaJuridica pjHelper;
     
     public static void gravarPessoaJuridica(DadosPessoaJuridicaGUI dadosPJ, PessoaJuridica pj) {
+        
         try {
+            dadosPJ.valorGHTextField.setText(dadosPJ.valorGHTextField.getText().replace(".", ""));
+            dadosPJ.valorGHTextField.setText(dadosPJ.valorGHTextField.getText().replace(",", "."));
+            
             pj = new PessoaJuridica(dadosPJ.nomePjTextField.getText(),
                                     dadosPJ.enderecoPjTextField.getText(),
                                     dadosPJ.telefonePjTextField.getText(),
