@@ -105,18 +105,13 @@ public class TipoDeColaboradorGUI extends javax.swing.JFrame {
 
     private void celetistaRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_celetistaRadioButtonActionPerformed
         // TODO add your handling code here:
-        if(celetistaRadioButton.isSelected()){
-            pjRadioButton.setSelected(false);
-            botaoAtivo = 1;
-        } 
+        botaoAtivo = 1;
+         
     }//GEN-LAST:event_celetistaRadioButtonActionPerformed
 
     private void pjRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pjRadioButtonActionPerformed
         // TODO add your handling code here:
-        if(pjRadioButton.isSelected()){
-            celetistaRadioButton.setSelected(false);
-            botaoAtivo = 2;
-        }
+        botaoAtivo = 2;
     }//GEN-LAST:event_pjRadioButtonActionPerformed
 
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
