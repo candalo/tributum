@@ -5,12 +5,16 @@
  */
 package tributum.view;
 
+import tributum.controller.PessoaJuridicaController;
+import tributum.model.PessoaJuridica;
+
 /**
  *
  * @author lucas
  */
 public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
-
+    
+    PessoaJuridica pessoa;
     /**
      * Creates new form DadosPessoaJuridicaGUI
      */
@@ -163,7 +167,12 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_valorGHTextFieldActionPerformed
 
     private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
-        // TODO add your handling code here:
+        PessoaJuridicaController pjController = new PessoaJuridicaController();
+        
+        pjController.gravarPessoaJuridica(this, pessoa);
+        
+        MenuGUI menuGui = new MenuGUI();
+        menuGui.setVisible(true);
     }//GEN-LAST:event_cadastrarButtonActionPerformed
 
     /**
