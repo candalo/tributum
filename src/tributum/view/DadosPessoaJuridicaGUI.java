@@ -32,9 +32,9 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        NomeTextField = new javax.swing.JTextField();
-        EnderecoTextField = new javax.swing.JTextField();
-        TelefoneTextField = new javax.swing.JTextField();
+        nomePjTextField = new javax.swing.JTextField();
+        enderecoPjTextField = new javax.swing.JTextField();
+        telefonePjTextField = new javax.swing.JTextField();
         cnpjTextField = new javax.swing.JTextField();
         valorGHTextField = new javax.swing.JTextField();
         cadastrarButton = new javax.swing.JButton();
@@ -51,21 +51,21 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
 
         jLabel5.setText("Valor ganho/hora:");
 
-        NomeTextField.addActionListener(new java.awt.event.ActionListener() {
+        nomePjTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NomeTextFieldActionPerformed(evt);
+                nomePjTextFieldActionPerformed(evt);
             }
         });
 
-        EnderecoTextField.addActionListener(new java.awt.event.ActionListener() {
+        enderecoPjTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EnderecoTextFieldActionPerformed(evt);
+                enderecoPjTextFieldActionPerformed(evt);
             }
         });
 
-        TelefoneTextField.addActionListener(new java.awt.event.ActionListener() {
+        telefonePjTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TelefoneTextFieldActionPerformed(evt);
+                telefonePjTextFieldActionPerformed(evt);
             }
         });
 
@@ -104,9 +104,9 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cadastrarButton)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(NomeTextField)
-                        .addComponent(EnderecoTextField)
-                        .addComponent(TelefoneTextField)
+                        .addComponent(nomePjTextField)
+                        .addComponent(enderecoPjTextField)
+                        .addComponent(telefonePjTextField)
                         .addComponent(cnpjTextField)
                         .addComponent(valorGHTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)))
                 .addContainerGap(75, Short.MAX_VALUE))
@@ -117,15 +117,15 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(NomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nomePjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(EnderecoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(enderecoPjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(TelefoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(telefonePjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -142,17 +142,17 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NomeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeTextFieldActionPerformed
+    private void nomePjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomePjTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NomeTextFieldActionPerformed
+    }//GEN-LAST:event_nomePjTextFieldActionPerformed
 
-    private void EnderecoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnderecoTextFieldActionPerformed
+    private void enderecoPjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enderecoPjTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_EnderecoTextFieldActionPerformed
+    }//GEN-LAST:event_enderecoPjTextFieldActionPerformed
 
-    private void TelefoneTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TelefoneTextFieldActionPerformed
+    private void telefonePjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefonePjTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TelefoneTextFieldActionPerformed
+    }//GEN-LAST:event_telefonePjTextFieldActionPerformed
 
     private void cnpjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnpjTextFieldActionPerformed
         // TODO add your handling code here:
@@ -204,16 +204,16 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField EnderecoTextField;
-    private javax.swing.JTextField NomeTextField;
-    private javax.swing.JTextField TelefoneTextField;
     private javax.swing.JButton cadastrarButton;
-    private javax.swing.JTextField cnpjTextField;
+    public javax.swing.JTextField cnpjTextField;
+    public javax.swing.JTextField enderecoPjTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField valorGHTextField;
+    public javax.swing.JTextField nomePjTextField;
+    public javax.swing.JTextField telefonePjTextField;
+    public javax.swing.JTextField valorGHTextField;
     // End of variables declaration//GEN-END:variables
 }

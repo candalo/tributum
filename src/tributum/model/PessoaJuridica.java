@@ -18,7 +18,7 @@ public class PessoaJuridica extends Colaborador{
     private double iss;
     
     public PessoaJuridica(String nome, String endereco, String telefone,
-                          String cnpj, double valorHoraTrabalho) {
+                          String cnpj, double valorHoraTrabalho) throws Exception{
         super(nome, endereco, telefone);
         this.cnpj = cnpj;
         this.valorHoraTrabalho = valorHoraTrabalho;
