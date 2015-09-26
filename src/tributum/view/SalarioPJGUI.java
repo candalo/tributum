@@ -5,12 +5,15 @@
  */
 package tributum.view;
 
+import tributum.controller.PessoaJuridicaController;
+
 /**
  *
  * @author lucas
  */
 public class SalarioPJGUI extends javax.swing.JFrame {
-
+    
+    private double ganhoHoraTrabalho;
     /**
      * Creates new form SalarioPJGUI
      */
@@ -81,7 +84,17 @@ public class SalarioPJGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_ganhohtTextFieldActionPerformed
 
     private void confirmarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarButtonActionPerformed
-        // TODO add your handling code here:
+        
+        ganhoHoraTrabalho = Double.parseDouble(this.ganhohtTextField.getText());
+        PessoaJuridicaController.alterarValorHoraTrabalho(ganhoHoraTrabalho);
+        
+        // Vai para a proxima tela
+        MenuGUI menuGui = new MenuGUI();
+        menuGui.setVisible(true);
+        
+        // Fecha tela atual
+        setVisible(false);
+        dispose();
     }//GEN-LAST:event_confirmarButtonActionPerformed
 
     /**
