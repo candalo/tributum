@@ -5,6 +5,9 @@
  */
 package tributum.view;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import tributum.controller.PessoaJuridicaController;
 import tributum.model.PessoaJuridica;
 
@@ -29,6 +32,16 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
         pisCofCsllJLabel.setText(Double.toString(pj.getPisCofCsll()));
         issJLabel.setText(Double.toString(pj.getIss()));
         salarioLiqJLabel.setText(Double.toString(pj.getSalarioLiquido()));
+    }
+    
+    /* Metodo que ira verificar se campo horas trabalhadas eh vazio */
+    private boolean isEmptyWorkedHours() {
+        if(this.horastrabTextField.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Campo horas trabalhadas não pode ser vazio", 
+                    "Campo horas trabalhadas vazio", JOptionPane.WARNING_MESSAGE);
+            return true;
+        }
+        return false;
     }
     
     /**
@@ -163,14 +176,21 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
 
     private void calcularTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularTextFieldActionPerformed
         
-        horasTrabalhadas = Short.parseShort(this.horastrabTextField.getText());
-        
-        //Chama o método que ira calcular os impostos
-        PessoaJuridicaController.calcularImpostos(horasTrabalhadas);
-        
-        // Exibe os valores na tela
-        exibeDados();
-        
+        if(!isEmptyWorkedHours()) {
+            horasTrabalhadas = Short.parseShort(this.horastrabTextField.getText());
+
+            try {
+                //Chama o método que ira calcular os impostos
+                PessoaJuridicaController.calcularImpostos(horasTrabalhadas);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), 
+                        e.getMessage(), JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            // Exibe os valores na tela
+            exibeDados();
+        }      
     }//GEN-LAST:event_calcularTextFieldActionPerformed
 
     private void voltarMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarMenuButtonActionPerformed
