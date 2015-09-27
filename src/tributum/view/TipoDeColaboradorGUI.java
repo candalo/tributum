@@ -105,19 +105,28 @@ public class TipoDeColaboradorGUI extends javax.swing.JFrame {
 
     private void celetistaRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_celetistaRadioButtonActionPerformed
         // TODO add your handling code here:
-        botaoAtivo = 1;
-         
     }//GEN-LAST:event_celetistaRadioButtonActionPerformed
 
     private void pjRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pjRadioButtonActionPerformed
         // TODO add your handling code here:
-        botaoAtivo = 2;
     }//GEN-LAST:event_pjRadioButtonActionPerformed
 
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
-        // TODO add your handling code here:
-        MenuGUI menuGui = new MenuGUI();
-        menuGui.setVisible(true);        
+        
+        DadosCeletistaGUI dadosCeletistaGui = new DadosCeletistaGUI();
+        DadosPessoaJuridicaGUI dadosPjGui = new DadosPessoaJuridicaGUI();
+
+        if(celetistaRadioButton.isSelected()) {
+            botaoAtivo = 1;
+            dadosCeletistaGui.setVisible(true);
+        }
+        else {
+            botaoAtivo = 2;
+            dadosPjGui.setVisible(true);
+        }
+        
+        setVisible(false);
+        dispose();        
     }//GEN-LAST:event_confirmButtonActionPerformed
 
     /**
@@ -150,7 +159,10 @@ public class TipoDeColaboradorGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TipoDeColaboradorGUI().setVisible(true);
+                TipoDeColaboradorGUI tipoDeColaboradorGui = 
+                        new TipoDeColaboradorGUI();
+                tipoDeColaboradorGui.setTitle("Tipo de colaborador");
+                tipoDeColaboradorGui.setVisible(true);
             }
         });
     }
