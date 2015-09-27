@@ -92,8 +92,11 @@ public class PessoaJuridica extends Colaborador{
         return this.valorHoraTrabalho;
     }
     
-    public void setValorHoraTrabalho(double valorHoraTrabalho) {
-        this.valorHoraTrabalho = valorHoraTrabalho;
+    public void setValorHoraTrabalho(double valorHoraTrabalho) throws Exception {
+        if(valorHoraTrabalho > 0)
+            this.valorHoraTrabalho = valorHoraTrabalho;
+        else
+            throw new Exception("Valor hora/trabalho deve ser maior que 0");
     }
     
     public double calcularSalarioBruto(short horasTrabalhadas) throws Exception {
