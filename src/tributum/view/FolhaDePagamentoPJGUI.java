@@ -54,7 +54,6 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        horastrabTextField = new javax.swing.JTextField();
         calcularTextField = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -67,16 +66,11 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         salarioLiqJLabel = new javax.swing.JLabel();
         voltarMenuButton = new javax.swing.JButton();
+        horastrabTextField = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Horas trabalhadas:");
-
-        horastrabTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                horastrabTextFieldActionPerformed(evt);
-            }
-        });
 
         calcularTextField.setText("Calcular");
         calcularTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -102,18 +96,20 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
             }
         });
 
+        horastrabTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(calcularTextField)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(horastrabTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(horastrabTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
@@ -123,7 +119,7 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addComponent(voltarMenuButton, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(valorBrutoJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(irrfJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(pisCofCsllJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -169,10 +165,6 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void horastrabTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horastrabTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_horastrabTextFieldActionPerformed
 
     private void calcularTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularTextFieldActionPerformed
         
@@ -244,7 +236,7 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton calcularTextField;
-    private javax.swing.JTextField horastrabTextField;
+    private javax.swing.JFormattedTextField horastrabTextField;
     private javax.swing.JLabel irrfJLabel;
     private javax.swing.JLabel issJLabel;
     private javax.swing.JLabel jLabel1;
