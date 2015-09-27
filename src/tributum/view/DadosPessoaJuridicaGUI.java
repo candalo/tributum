@@ -5,6 +5,7 @@
  */
 package tributum.view;
 
+import javax.swing.JOptionPane;
 import tributum.controller.PessoaJuridicaController;
 import tributum.model.PessoaJuridica;
 
@@ -146,7 +147,39 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /* Metodos para validar os campos de texto que estao vazios*/
+   
+    /* Validacao do campo nome */
+    private boolean isValidName() {
+        if(this.nomePjTextField.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Campo nome não pode ser vazio", "Campo nome vazio",
+                    JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+    
+    /* Validacao do campo endereco */
+    private boolean isValidAddress() {
+        if(this.enderecoPjTextField.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Campo endereço não pode ser vazio", 
+                    "Campo endereço vazio", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+    
+    /* Validacao telefone */
+    private boolean isValidValueGainedPerHour() {
+        if(this.valorGHTextField.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Campo valor ganho/hora não pode ser vazio", 
+                    "Campo valor ganho/hora vazio", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+    
     private void nomePjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomePjTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nomePjTextFieldActionPerformed
@@ -160,16 +193,18 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_valorGHTextFieldActionPerformed
 
     private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
-  
-        PessoaJuridicaController.gravarPessoaJuridica(this, pessoa);
         
-        // Vai para a proxima tela
-        MenuGUI menuGui = new MenuGUI();
-        menuGui.setVisible(true);
-        
-        // Fecha tela atual
-        setVisible(false);
-        dispose();
+        if(isValidName() && isValidAddress() && isValidValueGainedPerHour()) {
+            PessoaJuridicaController.gravarPessoaJuridica(this, pessoa);
+
+            // Vai para a proxima tela
+            MenuGUI menuGui = new MenuGUI();
+            menuGui.setVisible(true);
+
+            // Fecha tela atual
+            setVisible(false);
+            dispose();
+        }
     }//GEN-LAST:event_cadastrarButtonActionPerformed
 
     /**
