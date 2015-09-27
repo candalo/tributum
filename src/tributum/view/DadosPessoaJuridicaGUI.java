@@ -174,7 +174,7 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
         return true;
     }
     
-    /* Validacao telefone */
+    /* Validacao valor ganho por hora */
     private boolean isValidValueGainedPerHour() {
         if(this.valorGHTextField.getText().trim().length() == 0) {
             JOptionPane.showMessageDialog(null, "Campo valor ganho/hora não pode ser vazio", 

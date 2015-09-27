@@ -38,8 +38,12 @@ public class PessoaJuridicaController {
         setPessoaJuridica(pj);
     }
     
-    public static void alterarValorHoraTrabalho(double valorHoraTrabalho) {
-        pjHelper.setValorHoraTrabalho(valorHoraTrabalho);
+    public static void alterarValorHoraTrabalho(double valorHoraTrabalho) throws Exception {
+        try {
+            pjHelper.setValorHoraTrabalho(valorHoraTrabalho);
+        } catch(Exception e) {
+            throw new Exception("Valor/hora trabalho deve ser maior que 0");
+        }
     }
     
     public static void calcularImpostos(short horasTrabalhadas) {
