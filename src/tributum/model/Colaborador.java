@@ -50,7 +50,7 @@ public abstract class Colaborador
         if(isTelefone(telefone))
             this.telefone = telefone;
         else
-            throw new Exception("Telefone inválido");
+            throw new TelefoneException();
    }
    
    private boolean isTelefone(String telefone) 

@@ -30,7 +30,7 @@ public class PessoaJuridica extends Colaborador{
         if(isCnpj(cnpj))
             this.cnpj = cnpj;
         else
-           throw new Exception("Valor inválido para CNPJ"); 
+           throw new CnpjException(); 
     }
     
     private boolean isCnpj(String cnpj) {

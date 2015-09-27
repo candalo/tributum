@@ -5,7 +5,9 @@
  */
 package tributum.controller;
 
+import tributum.model.CnpjException;
 import tributum.model.PessoaJuridica;
+import tributum.model.TelefoneException;
 import tributum.view.DadosPessoaJuridicaGUI;
 
 /**
@@ -16,7 +18,7 @@ public class PessoaJuridicaController {
     
     private static PessoaJuridica pjHelper;
     
-    public static void gravarPessoaJuridica(DadosPessoaJuridicaGUI dadosPJ, PessoaJuridica pj) {
+    public static void gravarPessoaJuridica(DadosPessoaJuridicaGUI dadosPJ, PessoaJuridica pj) throws Exception {
         
         try {
             dadosPJ.valorGHTextField.setText(dadosPJ.valorGHTextField.getText().replace(".", ""));
@@ -27,8 +29,10 @@ public class PessoaJuridicaController {
                                     dadosPJ.telefonePjTextField.getText(),
                                     dadosPJ.cnpjTextField.getText(),
                                     Double.parseDouble(dadosPJ.valorGHTextField.getText()));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (TelefoneException e) {
+            throw new TelefoneException();
+        } catch (CnpjException e) {
+            throw new CnpjException();
         }
         
         setPessoaJuridica(pj);
