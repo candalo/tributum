@@ -70,6 +70,7 @@ public class MenuGUI extends javax.swing.JFrame {
             }
         });
 
+        calculoPgtoRadioButton.setSelected(true);
         calculoPgtoRadioButton.setText("Calcular pagamento");
         calculoPgtoRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
