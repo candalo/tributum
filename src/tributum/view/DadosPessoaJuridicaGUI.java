@@ -5,9 +5,13 @@
  */
 package tributum.view;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import tributum.controller.PessoaJuridicaController;
+import tributum.model.CnpjException;
 import tributum.model.PessoaJuridica;
+import tributum.model.TelefoneException;
 
 /**
  *
@@ -195,7 +199,21 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
     private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
         
         if(isValidName() && isValidAddress() && isValidValueGainedPerHour()) {
-            PessoaJuridicaController.gravarPessoaJuridica(this, pessoa);
+            try {
+                PessoaJuridicaController.gravarPessoaJuridica(this, pessoa);
+            } catch (TelefoneException e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), 
+                    "Campo telefone inválido", JOptionPane.WARNING_MESSAGE);
+                return;
+            } catch (CnpjException e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), 
+                    "Campo CNPJ inválido", JOptionPane.WARNING_MESSAGE);
+                return;
+            } catch (Exception ex) {
+                Logger.getLogger(DadosPessoaJuridicaGUI.class.getName()).log(Level.SEVERE, null, ex);
+                return;
+            }
+            
 
             // Vai para a proxima tela
             MenuGUI menuGui = new MenuGUI();
