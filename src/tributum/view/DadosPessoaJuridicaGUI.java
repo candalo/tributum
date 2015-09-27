@@ -5,8 +5,7 @@
  */
 package tributum.view;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
 import tributum.controller.PessoaJuridicaController;
 import tributum.model.CnpjException;
@@ -209,8 +208,9 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, e.getMessage(), 
                     "Campo CNPJ inválido", JOptionPane.WARNING_MESSAGE);
                 return;
-            } catch (Exception ex) {
-                Logger.getLogger(DadosPessoaJuridicaGUI.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), 
+                    "Campo valor ganho/hora inválido", JOptionPane.WARNING_MESSAGE);
                 return;
             }
             

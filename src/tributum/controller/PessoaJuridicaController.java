@@ -33,6 +33,8 @@ public class PessoaJuridicaController {
             throw new TelefoneException();
         } catch (CnpjException e) {
             throw new CnpjException();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
         }
         
         setPessoaJuridica(pj);
@@ -42,7 +44,7 @@ public class PessoaJuridicaController {
         try {
             pjHelper.setValorHoraTrabalho(valorHoraTrabalho);
         } catch(Exception e) {
-            throw new Exception("Valor/hora trabalho deve ser maior que 0");
+            throw new Exception(e.getMessage());
         }
     }
     

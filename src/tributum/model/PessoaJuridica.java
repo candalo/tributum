@@ -19,7 +19,7 @@ public class PessoaJuridica extends Colaborador{
                           String cnpj, double valorHoraTrabalho) throws Exception{
         super(nome, endereco, telefone);
         setCnpj(cnpj);
-        this.valorHoraTrabalho = valorHoraTrabalho;
+        setValorHoraTrabalho(valorHoraTrabalho);
     }
     
     public String getCnpj() {
