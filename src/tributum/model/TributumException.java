@@ -9,8 +9,16 @@ package tributum.model;
  *
  * @author lucas
  */
-public class CnpjException extends TributumException {
-    public CnpjException() {
-        super("CNPJ inválido");
+public class TributumException extends Exception {
+    private String msg;
+    
+    public TributumException(String msg) {
+        super(msg);
+        this.msg = msg;
+    }
+    
+    @Override
+    public String getMessage() {
+        return msg;
     }
 }
