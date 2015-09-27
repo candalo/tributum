@@ -55,8 +55,8 @@ public abstract class Colaborador
    
    private boolean isTelefone(String telefone) 
    {
-        return telefone.matches(".((10)|([1-9][1-9]).)\\s9?[6-9][0-9]{3}-[0-9]{4}") ||
-               telefone.matches(".((10)|([1-9][1-9]).)\\s[2-5][0-9]{3}-[0-9]{4}");
+        return telefone.matches("^\\([1-9]{2}\\)[2-9][0-9]{3,4}\\-[0-9]{4}$")||
+               telefone.matches("^\\([1-9]{2}\\)\\9[2-9][0-9]{5}\\-[0-9]{4}$");
    }
 }
 

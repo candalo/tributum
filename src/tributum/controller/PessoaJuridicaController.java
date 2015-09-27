@@ -28,7 +28,7 @@ public class PessoaJuridicaController {
                                     dadosPJ.cnpjTextField.getText(),
                                     Double.parseDouble(dadosPJ.valorGHTextField.getText()));
         } catch (Exception e) {
-            
+            System.out.println(e.getMessage());
         }
         
         setPessoaJuridica(pj);
