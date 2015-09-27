@@ -5,9 +5,8 @@
  */
 package tributum.model;
 
-
-public class CnpjException extends TributumException {
-    public CnpjException() {
-        super("CNPJ inválido");
+public class TelefoneException extends TributumException{
+    public TelefoneException() {
+        super("Telefone inválido");
     }
 }

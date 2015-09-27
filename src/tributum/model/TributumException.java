@@ -5,10 +5,7 @@
  */
 package tributum.model;
 
-/**
- *
- * @author lucas
- */
+
 public class TributumException extends Exception {
     private String msg;
     
