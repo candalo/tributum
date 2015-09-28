@@ -124,6 +124,6 @@ public class SalarioCeletistaGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton confirmarButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField salarioTextField;
+    public javax.swing.JTextField salarioTextField;
     // End of variables declaration//GEN-END:variables
 }

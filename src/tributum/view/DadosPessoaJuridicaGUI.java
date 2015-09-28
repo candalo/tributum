@@ -5,8 +5,12 @@
  */
 package tributum.view;
 
+
+import javax.swing.JOptionPane;
 import tributum.controller.PessoaJuridicaController;
+import tributum.model.CnpjException;
 import tributum.model.PessoaJuridica;
+import tributum.model.TelefoneException;
 
 /**
  *
@@ -38,10 +42,10 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         nomePjTextField = new javax.swing.JTextField();
         enderecoPjTextField = new javax.swing.JTextField();
-        telefonePjTextField = new javax.swing.JTextField();
-        cnpjTextField = new javax.swing.JTextField();
         valorGHTextField = new javax.swing.JTextField();
         cadastrarButton = new javax.swing.JButton();
+        telefonePjTextField = new javax.swing.JFormattedTextField();
+        cnpjTextField = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,18 +71,6 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
             }
         });
 
-        telefonePjTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                telefonePjTextFieldActionPerformed(evt);
-            }
-        });
-
-        cnpjTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cnpjTextFieldActionPerformed(evt);
-            }
-        });
-
         valorGHTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 valorGHTextFieldActionPerformed(evt);
@@ -91,6 +83,18 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
                 cadastrarButtonActionPerformed(evt);
             }
         });
+
+        try {
+            telefonePjTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            cnpjTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,14 +110,15 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cadastrarButton)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(nomePjTextField)
-                        .addComponent(enderecoPjTextField)
-                        .addComponent(telefonePjTextField)
-                        .addComponent(cnpjTextField)
-                        .addComponent(valorGHTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)))
-                .addContainerGap(75, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cadastrarButton)
+                        .addGap(0, 15, Short.MAX_VALUE))
+                    .addComponent(nomePjTextField)
+                    .addComponent(enderecoPjTextField)
+                    .addComponent(valorGHTextField)
+                    .addComponent(telefonePjTextField)
+                    .addComponent(cnpjTextField))
+                .addGap(75, 75, 75))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,7 +150,39 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /* Metodos para validar os campos de texto que estao vazios*/
+   
+    /* Validacao do campo nome */
+    private boolean isValidName() {
+        if(this.nomePjTextField.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Campo nome não pode ser vazio", "Campo nome vazio",
+                    JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+    
+    /* Validacao do campo endereco */
+    private boolean isValidAddress() {
+        if(this.enderecoPjTextField.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Campo endereço não pode ser vazio", 
+                    "Campo endereço vazio", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+    
+    /* Validacao valor ganho por hora */
+    private boolean isValidValueGainedPerHour() {
+        if(this.valorGHTextField.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Campo valor ganho/hora não pode ser vazio", 
+                    "Campo valor ganho/hora vazio", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+    
     private void nomePjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomePjTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nomePjTextFieldActionPerformed
@@ -154,29 +191,38 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_enderecoPjTextFieldActionPerformed
 
-    private void telefonePjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefonePjTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_telefonePjTextFieldActionPerformed
-
-    private void cnpjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnpjTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cnpjTextFieldActionPerformed
-
     private void valorGHTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorGHTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_valorGHTextFieldActionPerformed
 
     private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
-  
-        PessoaJuridicaController.gravarPessoaJuridica(this, pessoa);
         
-        // Vai para a proxima tela
-        MenuGUI menuGui = new MenuGUI();
-        menuGui.setVisible(true);
-        
-        // Fecha tela atual
-        setVisible(false);
-        dispose();
+        if(isValidName() && isValidAddress() && isValidValueGainedPerHour()) {
+            try {
+                PessoaJuridicaController.gravarPessoaJuridica(this, pessoa);
+            } catch (TelefoneException e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), 
+                    "Campo telefone inválido", JOptionPane.WARNING_MESSAGE);
+                return;
+            } catch (CnpjException e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), 
+                    "Campo CNPJ inválido", JOptionPane.WARNING_MESSAGE);
+                return;
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), 
+                    "Campo valor ganho/hora inválido", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+
+            // Vai para a proxima tela
+            MenuGUI menuGui = new MenuGUI();
+            menuGui.setVisible(true);
+
+            // Fecha tela atual
+            setVisible(false);
+            dispose();
+        }
     }//GEN-LAST:event_cadastrarButtonActionPerformed
 
     /**
@@ -218,7 +264,7 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cadastrarButton;
-    public javax.swing.JTextField cnpjTextField;
+    public javax.swing.JFormattedTextField cnpjTextField;
     public javax.swing.JTextField enderecoPjTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -226,7 +272,7 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     public javax.swing.JTextField nomePjTextField;
-    public javax.swing.JTextField telefonePjTextField;
+    public javax.swing.JFormattedTextField telefonePjTextField;
     public javax.swing.JTextField valorGHTextField;
     // End of variables declaration//GEN-END:variables
 }

@@ -68,6 +68,7 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="calculoPgtoRadioButton">
       <Properties>
+        <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Calcular pagamento"/>
       </Properties>
       <Events>

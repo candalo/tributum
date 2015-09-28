@@ -224,17 +224,17 @@ public class DadosCeletistaGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cadastrarButton;
-    private javax.swing.JTextField cpfTextField;
-    private javax.swing.JTextField enderecoTextField;
+    public javax.swing.JTextField cpfTextField;
+    public javax.swing.JTextField enderecoTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField nomeTextField;
-    private javax.swing.JTextField rgTextField;
-    private javax.swing.JTextField salMensalTextField;
-    private javax.swing.JTextField telefoneTextField;
+    public javax.swing.JTextField nomeTextField;
+    public javax.swing.JTextField rgTextField;
+    public javax.swing.JTextField salMensalTextField;
+    public javax.swing.JTextField telefoneTextField;
     // End of variables declaration//GEN-END:variables
 }

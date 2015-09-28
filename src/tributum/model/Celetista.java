@@ -12,7 +12,7 @@ package tributum.model;
 public class Celetista extends Colaborador implements IConstants {
     private String rg;
     private String cpf;
-    private float salarioMensal;
+    private double salarioMensal;
 
     public String getRg() {
         return rg;
@@ -26,24 +26,24 @@ public class Celetista extends Colaborador implements IConstants {
         return cpf;
     }
 
-    public void setCpf(String cpf) throws NumberFormatException, Exception{
+    public void setCpf(String cpf) throws Exception{
         if(this.validarCpf(cpf))
             this.cpf = cpf;
         else
-            throw new Exception("CPF inválido.");
+            throw new CpfException();
        
     }
 
-    public float getSalarioMensal() {
+    public double getSalarioMensal() {
         return salarioMensal;
     }
 
-    public void setSalarioMensal(float salarioMensal) {
+    public void setSalarioMensal(double salarioMensal) {
         this.salarioMensal = salarioMensal;
     }
 
-    public Celetista(String nome, String telefone, String endereco, String rg, String cpf, float salarioMensal)
-    throws NumberFormatException, Exception{
+    public Celetista(String nome, String telefone, String endereco, String rg, String cpf, double salarioMensal)
+    throws Exception{
         super(nome, telefone, endereco);
         this.setRg(rg);
         this.setCpf(cpf);
@@ -55,7 +55,7 @@ public class Celetista extends Colaborador implements IConstants {
      * @param hoursWork Trabalhadas
      * @return  float salario bruto
      */
-    public float calcularSalarioBruto(float hoursWork){
+    public double calcularSalarioBruto(float hoursWork){
         if(hoursWork < 161){
             return this.getSalarioMensal();
         }
@@ -69,24 +69,24 @@ public class Celetista extends Colaborador implements IConstants {
      * @param salarioBruto
      * @return float, valor descontado do imposto
      */
-    public float calcularIRRF(float salarioBruto){
+    public double calcularIRRF(double salarioBruto){
         if(salarioBruto < 1499.16){
             return 0;
         }
         else{
             if(salarioBruto < 2246.76){
-                return (float) (112.43 + (salarioBruto * 0.075));
+                return (112.43 + (salarioBruto * 0.075));
             }
             else{
                 if(salarioBruto < 2995.71){
-                    return (float) (280.94 + salarioBruto * 0.15);
+                    return (280.94 + salarioBruto * 0.15);
                 }
                 else{
                     if(salarioBruto < 3743.20){
-                        return (float) (505.62 + salarioBruto * 0.225);
+                        return (505.62 + salarioBruto * 0.225);
                     }
                     else{
-                        return (float) (692.78 + salarioBruto * 0.275);
+                        return (692.78 + salarioBruto * 0.275);
                     }
                 }
             
@@ -98,24 +98,24 @@ public class Celetista extends Colaborador implements IConstants {
     /**
      * Método que calcula o valor a ser descontado de INSS
      * @param salarioBruto
-     * @return float, o valor descontado
+     * @return double, o valor descontado
      */
-    public float calcularINSS(float salarioBruto){
+    public double calcularINSS(double salarioBruto){
         if(salarioBruto < 965.68){
-            return (float) (salarioBruto * 0.08);
+            return (salarioBruto * 0.08);
         }
         else{
             if(salarioBruto < 1609.46){
-                return (float) (salarioBruto * 0.09);
+                return (salarioBruto * 0.09);
             }
             else{
-                float descontoINSS;
+                double descontoINSS;
                 //Recebe o resultado do calculo para teste posterior,
                 //O desconto não pode passar do valor 354.08
-                descontoINSS = (float) (salarioBruto * 0.11);
+                descontoINSS = (salarioBruto * 0.11);
                 
                 if(descontoINSS > 354.08){
-                    return (float) 354.08;
+                    return 354.08;
                 }
                 return descontoINSS;
             }

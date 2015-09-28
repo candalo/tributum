@@ -209,15 +209,15 @@ public class FolhaDePagamentoCeletistaGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton calcularButton;
-    private javax.swing.JTextField horastrabTextField;
-    private javax.swing.JTextField inssTextField;
-    private javax.swing.JTextField irffTextField;
+    public javax.swing.JTextField horastrabTextField;
+    public javax.swing.JTextField inssTextField;
+    public javax.swing.JTextField irffTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField salLiqTextField;
-    private javax.swing.JTextField valorBrutoTextField;
+    public javax.swing.JTextField salLiqTextField;
+    public javax.swing.JTextField valorBrutoTextField;
     // End of variables declaration//GEN-END:variables
 }

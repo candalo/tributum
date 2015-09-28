@@ -5,6 +5,9 @@
  */
 package tributum.view;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import tributum.controller.PessoaJuridicaController;
 
 /**
@@ -19,6 +22,16 @@ public class SalarioPJGUI extends javax.swing.JFrame {
      */
     public SalarioPJGUI() {
         initComponents();
+    }
+    
+    // Metodo que ira verifica se o campo de texto esta vazio
+    private boolean isEmptyValueGainded() {
+        if(this.ganhohtTextField.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Campo ganho hora/trabalho não pode ser vazio", 
+                    "Campo ganho hora/trabalho vazio", JOptionPane.WARNING_MESSAGE);
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -85,16 +98,25 @@ public class SalarioPJGUI extends javax.swing.JFrame {
 
     private void confirmarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarButtonActionPerformed
         
-        ganhoHoraTrabalho = Double.parseDouble(this.ganhohtTextField.getText());
-        PessoaJuridicaController.alterarValorHoraTrabalho(ganhoHoraTrabalho);
+        if(!isEmptyValueGainded()) {
+            ganhoHoraTrabalho = Double.parseDouble(this.ganhohtTextField.getText());
+            
+            try {
+                PessoaJuridicaController.alterarValorHoraTrabalho(ganhoHoraTrabalho);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), 
+                        "Campo valor/hora trabalho inválido", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
         
-        // Vai para a proxima tela
-        MenuGUI menuGui = new MenuGUI();
-        menuGui.setVisible(true);
-        
-        // Fecha tela atual
-        setVisible(false);
-        dispose();
+            // Vai para a proxima tela
+            MenuGUI menuGui = new MenuGUI();
+            menuGui.setVisible(true);
+
+            // Fecha tela atual
+            setVisible(false);
+            dispose();
+        }
     }//GEN-LAST:event_confirmarButtonActionPerformed
 
     /**
