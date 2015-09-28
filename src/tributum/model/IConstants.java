@@ -11,5 +11,6 @@ package tributum.model;
  */
 public interface IConstants {
     int hoursWorking = 160;
+    int CpfLenght = 11;
     
 }

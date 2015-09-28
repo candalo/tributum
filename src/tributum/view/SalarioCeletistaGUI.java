@@ -5,6 +5,11 @@
  */
 package tributum.view;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import tributum.controller.CeletistaController;
+
 /**
  *
  * @author lucas
@@ -81,7 +86,13 @@ public class SalarioCeletistaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_salarioTextFieldActionPerformed
 
     private void confirmarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarButtonActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            CeletistaController.alterarSalario(this);
+        } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage(), 
+                    "Salario invalido", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_confirmarButtonActionPerformed
 
     /**

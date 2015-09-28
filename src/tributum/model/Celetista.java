@@ -44,7 +44,7 @@ public class Celetista extends Colaborador implements IConstants {
 
     public Celetista(String nome, String telefone, String endereco, String rg, String cpf, double salarioMensal)
     throws Exception{
-        super(nome, telefone, endereco);
+        super(nome, endereco, telefone);
         this.setRg(rg);
         this.setCpf(cpf);
         this.setSalarioMensal(salarioMensal);
@@ -131,7 +131,7 @@ public class Celetista extends Colaborador implements IConstants {
      */
     public boolean validarCpf(String cpf) throws NumberFormatException{
         String noneToken;
-        int[] computeCpf = new int[cpf.length()];
+        int[] computeCpf = new int[CpfLenght];
         int[] digCpf = new int[2];
         int auxSumCpf;
         noneToken = cpf;
@@ -143,8 +143,8 @@ public class Celetista extends Colaborador implements IConstants {
         noneToken = noneToken.trim();
         
         //Convert as substring em valores inteiros
-        for(int count = 0; count < cpf.length();count++){
-            computeCpf[count] = Integer.parseInt(cpf.substring(count, count));
+        for(int count = 0; count < CpfLenght;count++){
+            computeCpf[count] = Integer.parseInt(noneToken.substring(count, count+1));
         }
         
         //variável para auxiliar no calculo

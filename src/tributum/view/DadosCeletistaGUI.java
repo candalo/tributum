@@ -5,6 +5,13 @@
  */
 package tributum.view;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import tributum.controller.CeletistaController;
+import tributum.model.CpfException;
+import tributum.model.TelefoneException;
+
 /**
  *
  * @author lucas
@@ -35,11 +42,11 @@ public class DadosCeletistaGUI extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         nomeTextField = new javax.swing.JTextField();
         enderecoTextField = new javax.swing.JTextField();
-        telefoneTextField = new javax.swing.JTextField();
         rgTextField = new javax.swing.JTextField();
-        cpfTextField = new javax.swing.JTextField();
         salMensalTextField = new javax.swing.JTextField();
         cadastrarButton = new javax.swing.JButton();
+        cpfTextField = new javax.swing.JFormattedTextField();
+        telefoneTextField = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,21 +74,9 @@ public class DadosCeletistaGUI extends javax.swing.JFrame {
             }
         });
 
-        telefoneTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                telefoneTextFieldActionPerformed(evt);
-            }
-        });
-
         rgTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rgTextFieldActionPerformed(evt);
-            }
-        });
-
-        cpfTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cpfTextFieldActionPerformed(evt);
             }
         });
 
@@ -97,6 +92,18 @@ public class DadosCeletistaGUI extends javax.swing.JFrame {
                 cadastrarButtonActionPerformed(evt);
             }
         });
+
+        try {
+            cpfTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            telefoneTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,11 +123,11 @@ public class DadosCeletistaGUI extends javax.swing.JFrame {
                     .addComponent(cadastrarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(salMensalTextField)
                     .addComponent(rgTextField)
-                    .addComponent(cpfTextField)
-                    .addComponent(telefoneTextField)
                     .addComponent(nomeTextField)
-                    .addComponent(enderecoTextField))
-                .addContainerGap(134, Short.MAX_VALUE))
+                    .addComponent(enderecoTextField)
+                    .addComponent(telefoneTextField)
+                    .addComponent(cpfTextField))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,20 +176,33 @@ public class DadosCeletistaGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_enderecoTextFieldActionPerformed
 
-    private void telefoneTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefoneTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_telefoneTextFieldActionPerformed
-
     private void rgTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rgTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rgTextFieldActionPerformed
 
-    private void cpfTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cpfTextFieldActionPerformed
-
     private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
         // TODO add your handling code here:
+        try{
+            CeletistaController.gravarCeletista(this);
+        }catch(TelefoneException t){
+                JOptionPane.showMessageDialog(null, t.getMessage(), 
+                    "Campo telefone inválido", JOptionPane.WARNING_MESSAGE);
+                this.telefoneTextField.setFocusable(true);
+        }catch(CpfException c) {
+                JOptionPane.showMessageDialog(null, c.getMessage(), 
+                    "Campo CPF inválido", JOptionPane.WARNING_MESSAGE);
+                this.cpfTextField.setFocusable(true);
+        }catch (Exception ex) {
+            Logger.getLogger(DadosCeletistaGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            // Vai para a proxima tela
+            MenuGUI menuGui = new MenuGUI();
+            menuGui.setVisible(true);
+
+            // Fecha tela atual
+            setVisible(false);
+            dispose();
+        
     }//GEN-LAST:event_cadastrarButtonActionPerformed
 
     /**
@@ -224,7 +244,7 @@ public class DadosCeletistaGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cadastrarButton;
-    public javax.swing.JTextField cpfTextField;
+    public javax.swing.JFormattedTextField cpfTextField;
     public javax.swing.JTextField enderecoTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -235,6 +255,6 @@ public class DadosCeletistaGUI extends javax.swing.JFrame {
     public javax.swing.JTextField nomeTextField;
     public javax.swing.JTextField rgTextField;
     public javax.swing.JTextField salMensalTextField;
-    public javax.swing.JTextField telefoneTextField;
+    public javax.swing.JFormattedTextField telefoneTextField;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,11 @@
  */
 package tributum.view;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import tributum.controller.CeletistaController;
+
 /**
  *
  * @author lucas
@@ -150,7 +155,13 @@ public class FolhaDePagamentoCeletistaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_horastrabTextFieldActionPerformed
 
     private void calcularButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularButtonActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            CeletistaController.calcularImpostos(this);
+        } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage(), 
+                    "Valor invalido", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_calcularButtonActionPerformed
 
     private void valorBrutoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorBrutoTextFieldActionPerformed

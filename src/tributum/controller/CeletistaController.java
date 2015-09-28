@@ -38,12 +38,19 @@ public class CeletistaController {
         try{
             dadosCeletista.salMensalTextField.setText(dadosCeletista.salMensalTextField.getText().replace(".", ""));
             dadosCeletista.salMensalTextField.setText(dadosCeletista.salMensalTextField.getText().replace(",", "."));
-            celetistaHelper = new Celetista(dadosCeletista.nomeTextField.getText(),
+            setCeletistaHelper(new Celetista(dadosCeletista.nomeTextField.getText(),
                                             dadosCeletista.telefoneTextField.getText(),
                                             dadosCeletista.enderecoTextField.getText(),
                                             dadosCeletista.rgTextField.getText(),
                                             dadosCeletista.cpfTextField.getText(),
-                                            Double.parseDouble(dadosCeletista.salMensalTextField.getText()));
+                                            Double.parseDouble(dadosCeletista.salMensalTextField.getText())));
+            
+/*            setCeletistaHelper(new Celetista(dadosCeletista.nomeTextField.getText(),
+                                            dadosCeletista.telefoneTextField.getText(),
+                                            dadosCeletista.enderecoTextField.getText(),
+                                            dadosCeletista.rgTextField.getText(),
+                                            dadosCeletista.cpfTextField.getText(),
+                                            Double.parseDouble(dadosCeletista.salMensalTextField.getText())));*/
         }catch (TelefoneException t){
             throw new TelefoneException();
         }catch (CpfException c){
