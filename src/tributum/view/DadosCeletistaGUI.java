@@ -42,13 +42,14 @@ public class DadosCeletistaGUI extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         nomeTextField = new javax.swing.JTextField();
         enderecoTextField = new javax.swing.JTextField();
-        rgTextField = new javax.swing.JTextField();
-        salMensalTextField = new javax.swing.JTextField();
         cadastrarButton = new javax.swing.JButton();
         cpfTextField = new javax.swing.JFormattedTextField();
         telefoneTextField = new javax.swing.JFormattedTextField();
+        rgTextField = new javax.swing.JFormattedTextField();
+        salMensalTextField = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastro Celetista");
 
         jLabel1.setText("Nome:");
 
@@ -74,18 +75,6 @@ public class DadosCeletistaGUI extends javax.swing.JFrame {
             }
         });
 
-        rgTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rgTextFieldActionPerformed(evt);
-            }
-        });
-
-        salMensalTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salMensalTextFieldActionPerformed(evt);
-            }
-        });
-
         cadastrarButton.setText("Cadastrar");
         cadastrarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +94,14 @@ public class DadosCeletistaGUI extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        try {
+            rgTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("**.***.***-*")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        salMensalTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤#,##0.00"))));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,15 +116,17 @@ public class DadosCeletistaGUI extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cadastrarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(salMensalTextField)
-                    .addComponent(rgTextField)
-                    .addComponent(nomeTextField)
-                    .addComponent(enderecoTextField)
-                    .addComponent(telefoneTextField)
-                    .addComponent(cpfTextField))
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(nomeTextField)
+                        .addComponent(enderecoTextField)
+                        .addComponent(telefoneTextField)
+                        .addComponent(cpfTextField)
+                        .addComponent(rgTextField))
+                    .addComponent(salMensalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cadastrarButton, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,10 +163,6 @@ public class DadosCeletistaGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void salMensalTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salMensalTextFieldActionPerformed
-         // TODO add your handling code here:
-    }//GEN-LAST:event_salMensalTextFieldActionPerformed
-
     private void nomeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeTextFieldActionPerformed
@@ -175,10 +170,6 @@ public class DadosCeletistaGUI extends javax.swing.JFrame {
     private void enderecoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enderecoTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_enderecoTextFieldActionPerformed
-
-    private void rgTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rgTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rgTextFieldActionPerformed
 
     private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
         // TODO add your handling code here:
@@ -253,8 +244,8 @@ public class DadosCeletistaGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     public javax.swing.JTextField nomeTextField;
-    public javax.swing.JTextField rgTextField;
-    public javax.swing.JTextField salMensalTextField;
+    public javax.swing.JFormattedTextField rgTextField;
+    public javax.swing.JFormattedTextField salMensalTextField;
     public javax.swing.JFormattedTextField telefoneTextField;
     // End of variables declaration//GEN-END:variables
 }
