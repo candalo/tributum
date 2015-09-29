@@ -5,6 +5,9 @@
  */
 package tributum.model;
 
+/** 
+ * Classe que representa uma Pessoa Jurídica
+ */
 public class PessoaJuridica extends Colaborador{
     
     private String cnpj;
@@ -15,6 +18,14 @@ public class PessoaJuridica extends Colaborador{
     private double iss;
     private double salarioLiquido;
     
+    /**
+     * @param nome     Nome da pessoa
+     * @param endereco Endereço da pessoa
+     * @param telefone Telefone da pessoa
+     * @param cnpj     CNPJ da pessoa
+     * @param valorHoraTrabalho Valor ganho por hora de trabalho
+     * @throws Exception Valor de cnpj inválido e/ou valor ganho por hora de trabalho inválido                   
+     */
     public PessoaJuridica(String nome, String endereco, String telefone,
                           String cnpj, double valorHoraTrabalho) throws Exception{
         super(nome, endereco, telefone);
@@ -26,6 +37,11 @@ public class PessoaJuridica extends Colaborador{
         return this.cnpj;
     }
     
+    /**
+     * 
+     * @param cnpj Valor do cnpj
+     * @throws Exception Valor de cnpj inválido
+     */
     public void setCnpj(String cnpj) throws Exception {
         if(isCnpj(cnpj))
             this.cnpj = cnpj;
@@ -33,6 +49,11 @@ public class PessoaJuridica extends Colaborador{
            throw new CnpjException(); 
     }
     
+    /**
+     * 
+     * @param cnpj
+     * @return true caso cnpj seja válido, false caso contrário
+     */
     private boolean isCnpj(String cnpj) {
         
         if (!cnpj.substring(0, 1).equals("")) {  
@@ -92,6 +113,11 @@ public class PessoaJuridica extends Colaborador{
         return this.valorHoraTrabalho;
     }
     
+    /**
+     * 
+     * @param valorHoraTrabalho
+     * @throws Exception Valor ganho por hora de trabalho seja menor ou igual a 0
+     */
     public void setValorHoraTrabalho(double valorHoraTrabalho) throws Exception {
         if(valorHoraTrabalho > 0)
             this.valorHoraTrabalho = valorHoraTrabalho;
@@ -99,6 +125,12 @@ public class PessoaJuridica extends Colaborador{
             throw new Exception("Valor hora/trabalho deve ser maior que 0");
     }
     
+    /**
+     * 
+     * @param horasTrabalhadas Horas trabalhadas
+     * @return Salário bruto
+     * @throws Exception Horas trabalhadas seja menor que 0
+     */
     public double calcularSalarioBruto(short horasTrabalhadas) throws Exception {
         if(horasTrabalhadas >= 0) {
             this.salarioBruto = this.valorHoraTrabalho * horasTrabalhadas;
@@ -113,6 +145,10 @@ public class PessoaJuridica extends Colaborador{
         return this.salarioBruto;
     }
     
+    /**
+     * 
+     * @return Valor do imposto Irff
+     */
     public double calcularIrrf() {
         this.irrf = 0.015 * this.salarioBruto;
         return this.irrf;
@@ -122,6 +158,10 @@ public class PessoaJuridica extends Colaborador{
         return this.irrf;
     }
     
+    /**
+     * 
+     * @return Valor do imposto PIS/COFINS/CSLL
+     */
     public double calcularPisCofCsll() {
         if(this.salarioBruto > 5000.0) 
             this.pisCofCsll = 0.0465 * this.salarioBruto;
@@ -135,6 +175,10 @@ public class PessoaJuridica extends Colaborador{
         return this.pisCofCsll;
     }
     
+    /**
+     * 
+     * @return Valor do imposto Iss
+     */
     public double calcularIss() {
         if(this.salarioBruto > 5000.0)
             this.iss = 0.04 * this.salarioBruto;
