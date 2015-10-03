@@ -36,18 +36,25 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="nomeTextField" alignment="0" max="32767" attributes="0"/>
-                      <Component id="enderecoTextField" alignment="0" max="32767" attributes="0"/>
-                      <Component id="telefoneTextField" max="32767" attributes="0"/>
-                      <Component id="cpfTextField" max="32767" attributes="0"/>
-                      <Component id="rgTextField" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
+                      <Component id="cadastrarButton" pref="85" max="32767" attributes="0"/>
+                      <EmptySpace pref="24" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="salMensalTextField" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="nomeTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="enderecoTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="telefoneTextField" max="32767" attributes="0"/>
+                              <Component id="cpfTextField" max="32767" attributes="0"/>
+                              <Component id="rgTextField" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="salMensalTextField" min="-2" pref="91" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="cadastrarButton" pref="90" max="32767" attributes="0"/>
-              <EmptySpace pref="19" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -176,12 +183,7 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="salMensalTextField">
-      <Properties>
-        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-          <Format format="&#xa4;#,##0.00" subtype="-1" type="4"/>
-        </Property>
-      </Properties>
+    <Component class="javax.swing.JTextField" name="salMensalTextField">
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>

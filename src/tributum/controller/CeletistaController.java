@@ -35,15 +35,16 @@ public class CeletistaController {
     public static void gravarCeletista(DadosCeletistaGUI dadosCeletista) 
     throws TelefoneException, CpfException, Exception
     {
+        String salario;
         try{
-            dadosCeletista.salMensalTextField.setText(dadosCeletista.salMensalTextField.getText().replace(".", ""));
-            dadosCeletista.salMensalTextField.setText(dadosCeletista.salMensalTextField.getText().replace(",", "."));
+            salario = dadosCeletista.salMensalTextField.getText().replace(".", "");
+            salario = salario.replace(",", ".");
             setCeletistaHelper(new Celetista(dadosCeletista.nomeTextField.getText(),
                                             dadosCeletista.telefoneTextField.getText(),
                                             dadosCeletista.enderecoTextField.getText(),
                                             dadosCeletista.rgTextField.getText(),
                                             dadosCeletista.cpfTextField.getText(),
-                                            Double.parseDouble(dadosCeletista.salMensalTextField.getText())));
+                                            Double.parseDouble(salario)));
             
 /*            setCeletistaHelper(new Celetista(dadosCeletista.nomeTextField.getText(),
                                             dadosCeletista.telefoneTextField.getText(),

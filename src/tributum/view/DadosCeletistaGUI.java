@@ -46,7 +46,7 @@ public class DadosCeletistaGUI extends javax.swing.JFrame {
         cpfTextField = new javax.swing.JFormattedTextField();
         telefoneTextField = new javax.swing.JFormattedTextField();
         rgTextField = new javax.swing.JFormattedTextField();
-        salMensalTextField = new javax.swing.JFormattedTextField();
+        salMensalTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro Celetista");
@@ -100,8 +100,6 @@ public class DadosCeletistaGUI extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        salMensalTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤#,##0.00"))));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -117,16 +115,20 @@ public class DadosCeletistaGUI extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(nomeTextField)
-                        .addComponent(enderecoTextField)
-                        .addComponent(telefoneTextField)
-                        .addComponent(cpfTextField)
-                        .addComponent(rgTextField))
-                    .addComponent(salMensalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cadastrarButton, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(cadastrarButton, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                        .addContainerGap(24, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(nomeTextField)
+                                .addComponent(enderecoTextField)
+                                .addComponent(telefoneTextField)
+                                .addComponent(cpfTextField)
+                                .addComponent(rgTextField))
+                            .addComponent(salMensalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,7 +247,7 @@ public class DadosCeletistaGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     public javax.swing.JTextField nomeTextField;
     public javax.swing.JFormattedTextField rgTextField;
-    public javax.swing.JFormattedTextField salMensalTextField;
+    public javax.swing.JTextField salMensalTextField;
     public javax.swing.JFormattedTextField telefoneTextField;
     // End of variables declaration//GEN-END:variables
 }
