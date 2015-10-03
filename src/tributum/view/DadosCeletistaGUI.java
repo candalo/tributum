@@ -189,24 +189,30 @@ public class DadosCeletistaGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             CeletistaController.gravarCeletista(this);
-        }catch(TelefoneException t){
-                JOptionPane.showMessageDialog(null, t.getMessage(), 
-                    "Campo telefone inválido", JOptionPane.WARNING_MESSAGE);
-                this.telefoneTextField.setFocusable(true);
-        }catch(CpfException c) {
-                JOptionPane.showMessageDialog(null, c.getMessage(), 
-                    "Campo CPF inválido", JOptionPane.WARNING_MESSAGE);
-                this.cpfTextField.setFocusable(true);
-        }catch (Exception ex) {
-            Logger.getLogger(DadosCeletistaGUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            // Vai para a proxima tela
             MenuGUI menuGui = new MenuGUI();
             menuGui.setVisible(true);
 
             // Fecha tela atual
-            setVisible(false);
+//            setVisible(false);
             dispose();
+        }catch(TelefoneException t){
+                JOptionPane.showMessageDialog(null, t.getMessage(), 
+                    "Campo telefone inválido", JOptionPane.WARNING_MESSAGE);
+                this.telefoneTextField.requestFocus(true);
+        }catch(CpfException c) {
+                JOptionPane.showMessageDialog(null, c.getMessage(), 
+                    "Campo CPF inválido", JOptionPane.WARNING_MESSAGE);
+                this.cpfTextField.requestFocus(true);
+        }catch (Exception ex) {
+            Logger.getLogger(DadosCeletistaGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            // Vai para a proxima tela
+//            MenuGUI menuGui = new MenuGUI();
+//            menuGui.setVisible(true);
+
+            // Fecha tela atual
+//            setVisible(false);
+//            dispose();
         
     }//GEN-LAST:event_cadastrarButtonActionPerformed
 

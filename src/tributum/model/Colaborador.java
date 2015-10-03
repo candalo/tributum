@@ -24,12 +24,9 @@ public abstract class Colaborador
         return this.nome;   
    }
 
-   public void setNome(String nome) throws NomeException
+   public void setNome(String nome)
    {
-       if(this.isName(nome))
            this.nome = nome; 
-       else
-           throw new NomeException();
    }  	
 
    public String getEndereco()
@@ -62,8 +59,5 @@ public abstract class Colaborador
                telefone.matches("^\\([1-9]{2}\\)\\9[2-9][0-9]{5}\\-[0-9]{4}$");
    }
    
-   private boolean isName(String nome){
-       return nome.matches("[A-Z-a-z][ ]");
-   }
 }
 
