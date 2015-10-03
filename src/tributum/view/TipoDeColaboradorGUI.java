@@ -125,8 +125,8 @@ public class TipoDeColaboradorGUI extends javax.swing.JFrame {
             dadosPjGui.setVisible(true);
         }
         
-        setVisible(false);
-        dispose();        
+        setVisible(true);
+        //dispose();        
     }//GEN-LAST:event_confirmButtonActionPerformed
 
     /**

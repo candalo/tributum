@@ -14,7 +14,7 @@ public abstract class Colaborador
    
    public Colaborador(String nome, String endereco, String telefone) throws Exception
    {
-        this.nome     = nome;
+        this.setNome(nome);
         this.endereco = endereco;
         setTelefone(telefone);
    } 
@@ -24,9 +24,12 @@ public abstract class Colaborador
         return this.nome;   
    }
 
-   public void setNome(String nome)
+   public void setNome(String nome) throws NomeException
    {
-        this.nome = nome; 
+       if(this.isName(nome))
+           this.nome = nome; 
+       else
+           throw new NomeException();
    }  	
 
    public String getEndereco()
@@ -57,6 +60,10 @@ public abstract class Colaborador
    {
         return telefone.matches("^\\([1-9]{2}\\)[2-9][0-9]{3,4}\\-[0-9]{4}$")||
                telefone.matches("^\\([1-9]{2}\\)\\9[2-9][0-9]{5}\\-[0-9]{4}$");
+   }
+   
+   private boolean isName(String nome){
+       return nome.matches("[A-Z-a-z][ ]");
    }
 }
 
