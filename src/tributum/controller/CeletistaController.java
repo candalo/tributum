@@ -89,8 +89,8 @@ public class CeletistaController {
         double salarioLiquido, salarioBruto, inss, irrf;
         try{
             salarioBruto = getCeletistaHelper().calcularSalarioBruto(Float.parseFloat(folhapag.horastrabTextField.getText()));
-            inss = getCeletistaHelper().calcularINSS(Double.parseDouble(folhapag.valorBrutoTextField.getText()));
-            irrf = getCeletistaHelper().calcularIRRF(Double.parseDouble(folhapag.valorBrutoTextField.getText()));
+            inss = getCeletistaHelper().calcularINSS(salarioBruto);
+            irrf = getCeletistaHelper().calcularIRRF(salarioBruto);
             
             salarioLiquido = salarioBruto - inss - irrf; 
             

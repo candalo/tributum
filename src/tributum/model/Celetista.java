@@ -60,7 +60,7 @@ public class Celetista extends Colaborador implements IConstants {
             return this.getSalarioMensal();
         }
         else{
-            return (this.getSalarioMensal()/hoursWork) * (hoursWork - hoursWork);
+            return (this.getSalarioMensal()/hoursWork) * hoursWork;
         }
     }
     
