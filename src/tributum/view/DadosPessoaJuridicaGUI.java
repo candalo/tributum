@@ -46,8 +46,12 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
         cadastrarButton = new javax.swing.JButton();
         telefonePjTextField = new javax.swing.JFormattedTextField();
         cnpjTextField = new javax.swing.JFormattedTextField();
+        voltarButtonPJ = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro PJ");
+        setAlwaysOnTop(true);
+        setPreferredSize(new java.awt.Dimension(475, 308));
 
         jLabel1.setText("Nome:");
 
@@ -96,38 +100,47 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        voltarButtonPJ.setText("Voltar");
+        voltarButtonPJ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButtonPJActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
+                    .addComponent(jLabel1)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cnpjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(nomePjTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(telefonePjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(enderecoPjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(valorGHTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cadastrarButton)
-                        .addGap(0, 15, Short.MAX_VALUE))
-                    .addComponent(nomePjTextField)
-                    .addComponent(enderecoPjTextField)
-                    .addComponent(valorGHTextField)
-                    .addComponent(telefonePjTextField)
-                    .addComponent(cnpjTextField))
-                .addGap(75, 75, 75))
+                        .addComponent(voltarButtonPJ)
+                        .addGap(54, 54, 54)
+                        .addComponent(cadastrarButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(nomePjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(nomePjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(enderecoPjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -143,9 +156,11 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(valorGHTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addComponent(cadastrarButton)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(voltarButtonPJ)
+                    .addComponent(cadastrarButton))
+                .addGap(76, 76, 76))
         );
 
         pack();
@@ -225,6 +240,10 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cadastrarButtonActionPerformed
 
+    private void voltarButtonPJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonPJActionPerformed
+        dispose();
+    }//GEN-LAST:event_voltarButtonPJActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -274,5 +293,6 @@ public class DadosPessoaJuridicaGUI extends javax.swing.JFrame {
     public javax.swing.JTextField nomePjTextField;
     public javax.swing.JFormattedTextField telefonePjTextField;
     public javax.swing.JTextField valorGHTextField;
+    private javax.swing.JButton voltarButtonPJ;
     // End of variables declaration//GEN-END:variables
 }
