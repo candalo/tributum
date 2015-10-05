@@ -7,7 +7,6 @@ package tributum.controller;
 
 import tributum.model.Celetista;
 import tributum.model.CpfException;
-import tributum.model.NomeException;
 import tributum.model.TelefoneException;
 import tributum.view.DadosCeletistaGUI;
 import tributum.view.FolhaDePagamentoCeletistaGUI;
@@ -53,8 +52,6 @@ public class CeletistaController {
                                             dadosCeletista.rgTextField.getText(),
                                             dadosCeletista.cpfTextField.getText(),
                                             Double.parseDouble(dadosCeletista.salMensalTextField.getText())));*/
-        }catch(NomeException n){
-            throw new NomeException();
         }catch (TelefoneException t){
             throw new TelefoneException();
         }catch (CpfException c){
