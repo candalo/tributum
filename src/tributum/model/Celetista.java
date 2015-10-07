@@ -38,8 +38,11 @@ public class Celetista extends Colaborador implements IConstants {
         return salarioMensal;
     }
 
-    public void setSalarioMensal(double salarioMensal) {
-        this.salarioMensal = salarioMensal;
+    public void setSalarioMensal(double salarioMensal) throws SalarioException {
+        if(salarioMensal > 0)
+            this.salarioMensal = salarioMensal;
+        else
+            throw new SalarioException();
     }
 
     public Celetista(String nome, String telefone, String endereco, String rg, String cpf, double salarioMensal)
