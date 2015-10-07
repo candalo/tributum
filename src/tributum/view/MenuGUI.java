@@ -61,7 +61,7 @@ public class MenuGUI extends javax.swing.JFrame {
         confirmarButton = new javax.swing.JButton();
         sairButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         alteracaoPgtoRadioButton.setText("Alterar valor do pagamento");
         alteracaoPgtoRadioButton.addActionListener(new java.awt.event.ActionListener() {
@@ -142,11 +142,11 @@ public class MenuGUI extends javax.swing.JFrame {
         if(TipoDeColaboradorGUI.botaoAtivo == 1) {
             if(alteracaoPgtoRadioButton.isSelected()) {
                 salarioCeletistaGui.setVisible(true);
-                fechaTelaAtual();
+               // fechaTelaAtual();
             }
             else {
                 folhaDePagamentoCeletistaGui.setVisible(true);
-                fechaTelaAtual();
+               // fechaTelaAtual();
             }
         }
         // Caso seja PJ
@@ -163,7 +163,7 @@ public class MenuGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_confirmarButtonActionPerformed
 
     private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed
-        System.exit(1);
+        dispose();
     }//GEN-LAST:event_sairButtonActionPerformed
 
     /**

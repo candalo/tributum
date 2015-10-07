@@ -43,8 +43,10 @@ public class FolhaDePagamentoCeletistaGUI extends javax.swing.JFrame {
         irffTextField = new javax.swing.JTextField();
         inssTextField = new javax.swing.JTextField();
         salLiqTextField = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Folha de Pagamento Celetista");
 
         jLabel1.setText("Horas trabalhadas:");
 
@@ -69,27 +71,42 @@ public class FolhaDePagamentoCeletistaGUI extends javax.swing.JFrame {
 
         jLabel5.setText("Salário líquido:");
 
+        valorBrutoTextField.setEditable(false);
+        valorBrutoTextField.setEnabled(false);
         valorBrutoTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 valorBrutoTextFieldActionPerformed(evt);
             }
         });
 
+        irffTextField.setEditable(false);
+        irffTextField.setEnabled(false);
         irffTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 irffTextFieldActionPerformed(evt);
             }
         });
 
+        inssTextField.setEditable(false);
+        inssTextField.setEnabled(false);
         inssTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inssTextFieldActionPerformed(evt);
             }
         });
 
+        salLiqTextField.setEditable(false);
+        salLiqTextField.setEnabled(false);
         salLiqTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salLiqTextFieldActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Voltar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -100,24 +117,30 @@ public class FolhaDePagamentoCeletistaGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(calcularButton)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(horastrabTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(horastrabTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(salLiqTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                                    .addComponent(inssTextField)
+                                    .addComponent(irffTextField)
+                                    .addComponent(valorBrutoTextField))))
+                        .addContainerGap(148, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(salLiqTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                            .addComponent(inssTextField)
-                            .addComponent(irffTextField)
-                            .addComponent(valorBrutoTextField))))
-                .addContainerGap(148, Short.MAX_VALUE))
+                        .addComponent(calcularButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,7 +150,9 @@ public class FolhaDePagamentoCeletistaGUI extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(horastrabTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(calcularButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(calcularButton)
+                    .addComponent(jButton1))
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -161,6 +186,7 @@ public class FolhaDePagamentoCeletistaGUI extends javax.swing.JFrame {
         } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage(), 
                     "Valor invalido", JOptionPane.WARNING_MESSAGE);
+                this.horastrabTextField.requestFocus(true);
         }
     }//GEN-LAST:event_calcularButtonActionPerformed
 
@@ -179,6 +205,11 @@ public class FolhaDePagamentoCeletistaGUI extends javax.swing.JFrame {
     private void salLiqTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salLiqTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_salLiqTextFieldActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,6 +254,7 @@ public class FolhaDePagamentoCeletistaGUI extends javax.swing.JFrame {
     public javax.swing.JTextField horastrabTextField;
     public javax.swing.JTextField inssTextField;
     public javax.swing.JTextField irffTextField;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
