@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import tributum.controller.CeletistaController;
 import tributum.model.CpfException;
+import tributum.model.SalarioException;
 import tributum.model.TelefoneException;
 
 /**
@@ -203,8 +204,14 @@ public class DadosCeletistaGUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, c.getMessage(), 
                     "Campo CPF inválido", JOptionPane.WARNING_MESSAGE);
                 this.cpfTextField.requestFocus(true);
+        }catch(SalarioException s){
+                JOptionPane.showMessageDialog(null, s.getMessage(), 
+                    "Campo Salario inválido", JOptionPane.WARNING_MESSAGE);
+                this.salMensalTextField.requestFocus(true);
         }catch (Exception ex) {
-            Logger.getLogger(DadosCeletistaGUI.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), 
+                    "Campos em braco", JOptionPane.WARNING_MESSAGE);
+                this.nomeTextField.requestFocus(true);
         }
             // Vai para a proxima tela
 //            MenuGUI menuGui = new MenuGUI();

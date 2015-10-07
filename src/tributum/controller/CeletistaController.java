@@ -7,6 +7,7 @@ package tributum.controller;
 
 import tributum.model.Celetista;
 import tributum.model.CpfException;
+import tributum.model.SalarioException;
 import tributum.model.TelefoneException;
 import tributum.view.DadosCeletistaGUI;
 import tributum.view.FolhaDePagamentoCeletistaGUI;
@@ -66,13 +67,14 @@ public class CeletistaController {
      * @param novoSalario, class SalarioCeletistaGUI
      * @throws Exception
      */
-    public static void alterarSalario(SalarioCeletistaGUI novoSalario) throws Exception{
+    public static void alterarSalario(SalarioCeletistaGUI novoSalario) throws SalarioException{
+        String newSalario;
         try{
-            novoSalario.salarioTextField.setText(novoSalario.salarioTextField.getText().replace(".", ""));
-            novoSalario.salarioTextField.setText(novoSalario.salarioTextField.getText().replace(",", "."));
-            getCeletistaHelper().setSalarioMensal(Double.parseDouble(novoSalario.salarioTextField.getText()));
-        }catch (Exception e){
-            throw new Exception("Valor não modificado, verificá-lo.");
+            newSalario = novoSalario.salarioTextField.getText().replace(".", "");
+            newSalario = newSalario.replace(",", ".");
+            getCeletistaHelper().setSalarioMensal(Double.parseDouble(newSalario));
+        }catch (SalarioException s){
+            throw new SalarioException();
         }
     }
     
