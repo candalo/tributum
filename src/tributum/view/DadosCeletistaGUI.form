@@ -40,14 +40,6 @@
                   <Component id="nomeTextField" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="telefoneTextField" min="-2" pref="119" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="rgTextField" min="-2" pref="86" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                              <Component id="cpfTextField" min="-2" pref="96" max="-2" attributes="0"/>
-                          </Group>
                           <Component id="salMensalTextField" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jButton1" min="-2" pref="116" max="-2" attributes="0"/>
@@ -55,7 +47,17 @@
                               <Component id="cadastrarButton" min="-2" pref="135" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="40" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="54" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="telefoneTextField" alignment="0" pref="144" max="32767" attributes="0"/>
+                          <Component id="rgTextField" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cpfTextField" min="-2" pref="144" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -87,7 +89,7 @@
                   <Component id="jLabel5" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Component id="cpfTextField" alignment="2" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
                   <Component id="salMensalTextField" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel6" alignment="2" min="-2" max="-2" attributes="0"/>
@@ -97,7 +99,7 @@
                   <Component id="cadastrarButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="105" max="32767" attributes="0"/>
+              <EmptySpace pref="42" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
