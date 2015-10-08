@@ -153,11 +153,11 @@ public class MenuGUI extends javax.swing.JFrame {
         else {
             if(alteracaoPgtoRadioButton.isSelected()) {
                 salarioPJGui.setVisible(true);
-                fechaTelaAtual();
+                //fechaTelaAtual();
             }
             else {
                 folhaDePagamentoPJGui.setVisible(true);
-                fechaTelaAtual();
+                //fechaTelaAtual();
             }
         }
     }//GEN-LAST:event_confirmarButtonActionPerformed

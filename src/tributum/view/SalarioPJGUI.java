@@ -46,8 +46,10 @@ public class SalarioPJGUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         ganhohtTextField = new javax.swing.JTextField();
         confirmarButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Mudança ganho/hora de trabalho");
 
         jLabel1.setText("Ganho hora/trabalho:");
 
@@ -64,13 +66,22 @@ public class SalarioPJGUI extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Voltar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(69, 69, 69)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(confirmarButton)
@@ -85,7 +96,9 @@ public class SalarioPJGUI extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(ganhohtTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(51, 51, 51)
-                .addComponent(confirmarButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(confirmarButton)
+                    .addComponent(jButton1))
                 .addContainerGap(82, Short.MAX_VALUE))
         );
 
@@ -108,16 +121,16 @@ public class SalarioPJGUI extends javax.swing.JFrame {
                         "Campo valor/hora trabalho inválido", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-        
-            // Vai para a proxima tela
-            MenuGUI menuGui = new MenuGUI();
-            menuGui.setVisible(true);
-
-            // Fecha tela atual
-            setVisible(false);
-            dispose();
+            
+            JOptionPane.showMessageDialog(null, "Modificação Realizada com sucesso", 
+                    "Salario válido", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_confirmarButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dispose();
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,6 +172,7 @@ public class SalarioPJGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton confirmarButton;
     private javax.swing.JTextField ganhohtTextField;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
