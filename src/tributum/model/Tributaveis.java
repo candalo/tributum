@@ -10,5 +10,9 @@ package tributum.model;
  * @author medabot
  */
 public interface Tributaveis {
-    public double valorTotalImposto(Imposto imposto[]);    
+    /**
+     * @return double, a soma total dos impostos.
+     * @throws Exception, se for nulo ou vazio.
+     */
+    public double valorTotalImposto(Imposto impostos[])throws Exception;
 }
