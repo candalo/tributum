@@ -9,7 +9,7 @@ package tributum.model;
  *
  * @author lucas
  */
-public class Produto 
+public class Produto implements Tributaveis
 {
     private String nome;
     private double preco;
@@ -32,6 +32,22 @@ public class Produto
     public void setPreco(double preco)
     {
         this.preco = preco;
+    }
+
+    @Override
+    public double valorTotalImposto(Imposto[] impostos) throws Exception 
+    {
+        if(impostos.length == 0 || impostos == null) {
+            throw new Exception("Valor não calculado, favor recalcular");
+        }
+        
+        double valorTotalImposto = 0;
+        
+        for(Imposto imposto : impostos) {
+            valorTotalImposto += imposto.getValorImposto();
+        }
+        
+        return valorTotalImposto;
     }
     
 }
