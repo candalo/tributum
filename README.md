@@ -1,4 +1,6 @@
 # tributum
 ATPS de POOII
 
-	* A classe celetista, poderá ser abstrata, e implementar uma classe de calculo de documento, para calcular o CPF/CNPJ.
+	- Programa que trabalha com cálculos de impostos de duas categorias:
+		- Celetista
+		- PJ
