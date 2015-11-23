@@ -59,5 +59,9 @@ public abstract class Colaborador
                telefone.matches("^\\([1-9]{2}\\)\\9[2-9][0-9]{5}\\-[0-9]{4}$");
    }
    
+   public abstract double calcularSalarioBruto(short horasTrabalhadas) throws Exception;
+   
+   public abstract Imposto[] calcularImpostos(short horasTrabalhadas) throws Exception;
+   
 }
 
