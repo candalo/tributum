@@ -6,7 +6,7 @@
 package tributum.model;
 
 
-public abstract class Colaborador
+public abstract class Colaborador implements Tributaveis
 {
    private String nome;
    private String endereco;
@@ -62,6 +62,21 @@ public abstract class Colaborador
    public abstract double calcularSalarioBruto(short horasTrabalhadas) throws Exception;
    
    public abstract Imposto[] calcularImpostos(short horasTrabalhadas) throws Exception;
+   
+   public double valorTotalImposto(Imposto impostos[])throws Exception{
+       double sumTributum = 0;
+              
+       if(impostos != null){
+          for(Imposto tribut: impostos){
+              if(tribut.getNomeImposto() != null)||(tribut.getNomeImposto().trim() != "")
+                sumTributum += tribut.getValorImposto();
+              else
+                 throw new Exception();
+          }
+       }
+       else
+          throw new Exception();
+   }
    
 }
 
