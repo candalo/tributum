@@ -68,7 +68,7 @@ public abstract class Colaborador implements Tributaveis
               
        if(impostos != null){
           for(Imposto tribut: impostos){
-              if(tribut.getNomeImposto() != null)||(tribut.getNomeImposto().trim() != "")
+              if((tribut.getNomeImposto() != null)||(tribut.getNomeImposto().isEmpty()))
                 sumTributum += tribut.getValorImposto();
               else
                  throw new Exception();
@@ -76,6 +76,7 @@ public abstract class Colaborador implements Tributaveis
        }
        else
           throw new Exception();
+       return sumTributum;
    }
    
 }
