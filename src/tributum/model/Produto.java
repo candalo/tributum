@@ -35,10 +35,10 @@ public class Produto implements Tributaveis
     }
 
     @Override
-    public double valorTotalImposto(Imposto[] impostos) throws Exception 
+    public double valorTotalImposto(Imposto[] impostos) throws NullPointerException, EmptyException 
     {
         if(impostos.length == 0 || impostos == null) {
-            throw new Exception("Valor não calculado, favor recalcular");
+            throw new EmptyException("Valor não calculado, favor recalcular");
         }
         
         double valorTotalImposto = 0;

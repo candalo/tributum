@@ -63,19 +63,19 @@ public abstract class Colaborador implements Tributaveis
    
    public abstract Imposto[] calcularImpostos(short horasTrabalhadas) throws Exception;
    
-   public double valorTotalImposto(Imposto impostos[])throws Exception{
+   public double valorTotalImposto(Imposto impostos[])throws NullPointerException, EmptyException{
        double sumTributum = 0;
               
        if(impostos != null){
           for(Imposto tribut: impostos){
-              if((tribut.getNomeImposto() != null)||(tribut.getNomeImposto().isEmpty()))
+              if((tribut.getNomeImposto() != null)||(!tribut.getNomeImposto().isEmpty()))
                 sumTributum += tribut.getValorImposto();
               else
-                 throw new Exception();
+                 throw new EmptyException();
           }
        }
        else
-          throw new Exception();
+          throw new NullPointerException();
        return sumTributum;
    }
    

@@ -12,7 +12,7 @@ package tributum.model;
 public interface Tributaveis {
     /**
      * @return double, a soma total dos impostos.
-     * @throws Exception, se for nulo ou vazio.
+     * @throws NullPointerException, EmptyException.
      */
-    public double valorTotalImposto(Imposto impostos[])throws Exception;
+    public double valorTotalImposto(Imposto impostos[])throws NullPointerException, EmptyException;
 }
