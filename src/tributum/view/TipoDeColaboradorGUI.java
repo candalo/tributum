@@ -45,6 +45,7 @@ public class TipoDeColaboradorGUI extends javax.swing.JFrame {
         celetistaRadioButton = new javax.swing.JRadioButton();
         pjRadioButton = new javax.swing.JRadioButton();
         confirmButton = new javax.swing.JButton();
+        produtoRadioButton1 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,6 +74,13 @@ public class TipoDeColaboradorGUI extends javax.swing.JFrame {
             }
         });
 
+        produtoRadioButton1.setText("Cadastro de Produtos");
+        produtoRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                produtoRadioButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -80,6 +88,7 @@ public class TipoDeColaboradorGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(produtoRadioButton1)
                     .addComponent(confirmButton)
                     .addComponent(celetistaRadioButton)
                     .addComponent(pjRadioButton)
@@ -95,9 +104,11 @@ public class TipoDeColaboradorGUI extends javax.swing.JFrame {
                 .addComponent(celetistaRadioButton)
                 .addGap(18, 18, 18)
                 .addComponent(pjRadioButton)
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
+                .addComponent(produtoRadioButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(confirmButton)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGap(34, 34, 34))
         );
 
         pack();
@@ -115,6 +126,7 @@ public class TipoDeColaboradorGUI extends javax.swing.JFrame {
         
         DadosCeletistaGUI dadosCeletistaGui = new DadosCeletistaGUI();
         DadosPessoaJuridicaGUI dadosPjGui = new DadosPessoaJuridicaGUI();
+        
 
         if(celetistaRadioButton.isSelected()) {
             botaoAtivo = 1;
@@ -128,6 +140,10 @@ public class TipoDeColaboradorGUI extends javax.swing.JFrame {
         setVisible(true);
         //dispose();        
     }//GEN-LAST:event_confirmButtonActionPerformed
+
+    private void produtoRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtoRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_produtoRadioButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,5 +188,6 @@ public class TipoDeColaboradorGUI extends javax.swing.JFrame {
     private javax.swing.JButton confirmButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JRadioButton pjRadioButton;
+    public javax.swing.JRadioButton produtoRadioButton1;
     // End of variables declaration//GEN-END:variables
 }
