@@ -29,7 +29,8 @@ public class TipoDeColaboradorGUI extends javax.swing.JFrame {
         ButtonGroup bg1 = new ButtonGroup();
         
         bg1.add(celetistaRadioButton);
-        bg1.add(pjRadioButton);
+        bg1.add(pjRadioButton); 
+        bg1.add(produtoRadioButton);    
     }
 
     /**
@@ -45,7 +46,7 @@ public class TipoDeColaboradorGUI extends javax.swing.JFrame {
         celetistaRadioButton = new javax.swing.JRadioButton();
         pjRadioButton = new javax.swing.JRadioButton();
         confirmButton = new javax.swing.JButton();
-        produtoRadioButton1 = new javax.swing.JRadioButton();
+        produtoRadioButton = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,10 +75,10 @@ public class TipoDeColaboradorGUI extends javax.swing.JFrame {
             }
         });
 
-        produtoRadioButton1.setText("Cadastro de Produtos");
-        produtoRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        produtoRadioButton.setText("Cadastro de Produtos");
+        produtoRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                produtoRadioButton1ActionPerformed(evt);
+                produtoRadioButtonActionPerformed(evt);
             }
         });
 
@@ -88,7 +89,7 @@ public class TipoDeColaboradorGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(produtoRadioButton1)
+                    .addComponent(produtoRadioButton)
                     .addComponent(confirmButton)
                     .addComponent(celetistaRadioButton)
                     .addComponent(pjRadioButton)
@@ -105,7 +106,7 @@ public class TipoDeColaboradorGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(pjRadioButton)
                 .addGap(18, 18, 18)
-                .addComponent(produtoRadioButton1)
+                .addComponent(produtoRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(confirmButton)
                 .addGap(34, 34, 34))
@@ -126,24 +127,30 @@ public class TipoDeColaboradorGUI extends javax.swing.JFrame {
         
         DadosCeletistaGUI dadosCeletistaGui = new DadosCeletistaGUI();
         DadosPessoaJuridicaGUI dadosPjGui = new DadosPessoaJuridicaGUI();
-        
+        DadosProdutosGUI dadosProdutosGui = new DadosProdutosGUI();
 
         if(celetistaRadioButton.isSelected()) {
             botaoAtivo = 1;
             dadosCeletistaGui.setVisible(true);
         }
         else {
-            botaoAtivo = 2;
-            dadosPjGui.setVisible(true);
+            if(pjRadioButton.isSelected()){
+                botaoAtivo = 2;
+                dadosPjGui.setVisible(true);
+            }
+            else{
+                botaoAtivo = 3;
+                dadosProdutosGui.setVisible(true);
+            }
         }
         
         setVisible(true);
         //dispose();        
     }//GEN-LAST:event_confirmButtonActionPerformed
 
-    private void produtoRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtoRadioButton1ActionPerformed
+    private void produtoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtoRadioButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_produtoRadioButton1ActionPerformed
+    }//GEN-LAST:event_produtoRadioButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,6 +195,6 @@ public class TipoDeColaboradorGUI extends javax.swing.JFrame {
     private javax.swing.JButton confirmButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JRadioButton pjRadioButton;
-    public javax.swing.JRadioButton produtoRadioButton1;
+    public javax.swing.JRadioButton produtoRadioButton;
     // End of variables declaration//GEN-END:variables
 }
