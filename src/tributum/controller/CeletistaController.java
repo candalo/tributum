@@ -92,7 +92,7 @@ public class CeletistaController {
             salarioBruto = getCeletistaHelper().calcularSalarioBruto(Short.valueOf(folhapag.horastrabTextField.getText()));
             impostos = getCeletistaHelper().calcularImpostos(Short.valueOf(folhapag.horastrabTextField.getText()));
             
-            salarioLiquido = salarioBruto - impostos[0].getValorImposto() - impostos[1].getValorImposto(); 
+            salarioLiquido = salarioBruto - getCeletistaHelper().valorTotalImposto(impostos); 
             
             folhapag.totalImpostoTextField.setText(String.valueOf(getCeletistaHelper().valorTotalImposto(impostos)));
             folhapag.valorBrutoTextField.setText(String.valueOf(salarioBruto));
