@@ -5,6 +5,7 @@
  */
 package tributum.controller;
 
+import java.text.DecimalFormat;
 import tributum.model.EmptyException;
 import tributum.model.Imposto;
 import tributum.model.NomeException;
@@ -57,14 +58,15 @@ public class ProdutoController {
     public static String calcularImpostosProduto(Produto produtoAux) throws NullPointerException, EmptyException, NomeException, Exception{
         Imposto[] impostos = new Imposto[4];
         String mensagem = "";
+        DecimalFormat formato = new DecimalFormat("#.##");
         try{
             impostos = ProdutoController.calculandoImpostos(produtoAux.getPreco());
         
             for(Imposto tributum: impostos){
-                mensagem += tributum.getNomeImposto()+" R$"+Double.toString(tributum.getValorImposto())+"/n";
+                mensagem += tributum.getNomeImposto()+" R$"+formato.format(tributum.getValorImposto())+"\n";
             }
             
-            mensagem += " Soma dos impostos: R$"+Double.toString(produtoAux.valorTotalImposto(impostos));
+            mensagem += " Soma dos impostos: R$"+formato.format(produtoAux.valorTotalImposto(impostos));
         }catch(NomeException n){
             throw new NomeException(n.getMessage());
         }catch(NullPointerException np){
@@ -92,9 +94,9 @@ public class ProdutoController {
         
             impostos[1] = new Imposto("IPI", valorProduto * 0.05);
         
-            impostos[2] = new Imposto("PIS", valorProduto * 0.165);
+            impostos[2] = new Imposto("PIS", valorProduto * 0.0165);
 
-            impostos[3] = new Imposto("COFINS", valorProduto * 0.76);
+            impostos[3] = new Imposto("COFINS", valorProduto * 0.076);
         }catch(NomeException n){
             throw new NomeException(n.getMessage());
         }catch(Exception e){
