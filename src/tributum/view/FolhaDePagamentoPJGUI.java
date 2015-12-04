@@ -19,7 +19,7 @@ import tributum.model.PessoaJuridica;
  */
 public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
     
-    private short horasTrabalhadas;
+    private short horasTrabalhadas = -1;
     private PessoaJuridica pj = PessoaJuridicaController.getPessoaJuridica();
     private Imposto[] impostos;
     
@@ -167,30 +167,30 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(valorBrutoJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(irrfJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(pisCofCsllJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(issJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel6))
                     .addComponent(salarioLiqJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(totalImpostosJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(voltarButton)
-                .addGap(23, 23, 23))
+                .addGap(50, 50, 50))
         );
 
         pack();
@@ -204,7 +204,6 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
             try {
                 //Chama o método que ira calcular os impostos
                 impostos = PessoaJuridicaController.calcularImpostos(horasTrabalhadas);
-                PessoaJuridicaController.calcularSalarioLiquido();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage(), 
                         e.getMessage(), JOptionPane.WARNING_MESSAGE);
@@ -221,11 +220,17 @@ public class FolhaDePagamentoPJGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_voltarButtonActionPerformed
 
     private void calcularImpostosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularImpostosButtonActionPerformed
-        try {
-            totalImpostosJLabel.setText(Double.toString(pj.valorTotalImposto(impostos))); 
-       } catch (NullPointerException | EmptyException ex) {
-            Logger.getLogger(FolhaDePagamentoPJGUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        if(horasTrabalhadas != -1)
+            try {
+                totalImpostosJLabel.setText(Double.toString(pj.valorTotalImposto(impostos))); 
+            } catch (NullPointerException | EmptyException ex) {
+                Logger.getLogger(FolhaDePagamentoPJGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        else
+            JOptionPane.showMessageDialog(null, "Calcule o salário primeiro", 
+                        "Calcule o salário primeiro", JOptionPane.WARNING_MESSAGE);
+            
     }//GEN-LAST:event_calcularImpostosButtonActionPerformed
 
     /**

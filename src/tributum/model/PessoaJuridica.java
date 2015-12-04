@@ -172,11 +172,8 @@ public class PessoaJuridica extends Colaborador{
         return this.iss;
     }
     
-    public void calcularSalarioLiquido() {
-        this.salarioLiquido = this.salarioBruto -
-                              this.irrf -
-                              this.pisCofCsll -
-                              this.iss;
+    public void setSalarioLiquido(double salarioLiquido) {
+       this.salarioLiquido = salarioLiquido;
     }
     
     public double getSalarioLiquido() {

@@ -51,18 +51,19 @@ public class PessoaJuridicaController {
     
     public static Imposto[] calcularImpostos(short horasTrabalhadas) throws Exception {
         
+        Imposto[] impostos;
+        
         try {
             pjHelper.calcularSalarioBruto(horasTrabalhadas);
         }catch(Exception e) {
             throw new Exception("Valor de horas trabalhadas deve ser maior ou igual a 0");
         }
         
-        return pjHelper.calcularImpostos(horasTrabalhadas);
-    }
-    
-    public static void calcularSalarioLiquido() {
+        impostos = pjHelper.calcularImpostos(horasTrabalhadas);
         
-        pjHelper.calcularSalarioLiquido();
+        pjHelper.setSalarioLiquido(pjHelper.getSalarioBruto() - pjHelper.valorTotalImposto(impostos));
+        
+        return impostos;
     }
     
     public static void setPessoaJuridica(PessoaJuridica pj) {
