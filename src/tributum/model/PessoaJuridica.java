@@ -127,10 +127,84 @@ public class PessoaJuridica extends Colaborador{
     
     /**
      * 
+     * @return Valor do imposto Irff
+     */
+    private double calcularIrrf() {
+        this.irrf = 0.015 * this.salarioBruto;
+        return this.irrf;
+    }
+    
+    private double getIrrf() {
+        return this.irrf;
+    }
+    
+    /**
+     * 
+     * @return Valor do imposto PIS/COFINS/CSLL
+     */
+    private double calcularPisCofCsll() {
+        if(this.salarioBruto > 5000.0) 
+            this.pisCofCsll = 0.0465 * this.salarioBruto;
+        else
+            this.pisCofCsll = 0;
+        
+        return this.pisCofCsll;
+    }
+    
+    private double getPisCofCsll() {
+        return this.pisCofCsll;
+    }
+    
+    /**
+     * 
+     * @return Valor do imposto Iss
+     */
+    private double calcularIss() {
+        if(this.salarioBruto > 5000.0)
+            this.iss = 0.04 * this.salarioBruto;
+        else
+            this.iss = 0;
+        
+        return this.iss;
+    }
+    
+    private double getIss() {
+        return this.iss;
+    }
+    
+    public void calcularSalarioLiquido() {
+        this.salarioLiquido = this.salarioBruto -
+                              this.irrf -
+                              this.pisCofCsll -
+                              this.iss;
+    }
+    
+    public double getSalarioLiquido() {
+        return this.salarioLiquido;
+    }
+
+    @Override
+    public Imposto[] calcularImpostos(short horasTrabalhadas) throws Exception {
+        calcularIrrf();
+        calcularIss();
+        calcularPisCofCsll();
+        
+        Imposto impostoIrrf = new Imposto("irrf", getIrrf());
+        Imposto impostoIss = new Imposto("iss", getIss());
+        Imposto impostoPis = new Imposto("pisCofinsCsll", getPisCofCsll());
+    
+        Imposto[] impostos = {impostoIrrf, impostoIss, impostoPis};
+        
+        return impostos;
+    }
+    
+    /**
+     * 
      * @param horasTrabalhadas Horas trabalhadas
      * @return Salário bruto
      * @throws Exception Horas trabalhadas seja menor que 0
      */
+    @Override
     public double calcularSalarioBruto(short horasTrabalhadas) throws Exception {
         if(horasTrabalhadas >= 0) {
             this.salarioBruto = this.valorHoraTrabalho * horasTrabalhadas;
@@ -145,61 +219,4 @@ public class PessoaJuridica extends Colaborador{
         return this.salarioBruto;
     }
     
-    /**
-     * 
-     * @return Valor do imposto Irff
-     */
-    public double calcularIrrf() {
-        this.irrf = 0.015 * this.salarioBruto;
-        return this.irrf;
-    }
-    
-    public double getIrrf() {
-        return this.irrf;
-    }
-    
-    /**
-     * 
-     * @return Valor do imposto PIS/COFINS/CSLL
-     */
-    public double calcularPisCofCsll() {
-        if(this.salarioBruto > 5000.0) 
-            this.pisCofCsll = 0.0465 * this.salarioBruto;
-        else
-            this.pisCofCsll = 0;
-        
-        return this.pisCofCsll;
-    }
-    
-    public double getPisCofCsll() {
-        return this.pisCofCsll;
-    }
-    
-    /**
-     * 
-     * @return Valor do imposto Iss
-     */
-    public double calcularIss() {
-        if(this.salarioBruto > 5000.0)
-            this.iss = 0.04 * this.salarioBruto;
-        else
-            this.iss = 0;
-        
-        return this.iss;
-    }
-    
-    public double getIss() {
-        return this.iss;
-    }
-    
-    public void calcularSalarioLiquido() {
-        this.salarioLiquido = this.salarioBruto -
-                              this.irrf -
-                              this.pisCofCsll -
-                              this.iss;
-    }
-    
-    public double getSalarioLiquido() {
-        return this.salarioLiquido;
-    }
 }

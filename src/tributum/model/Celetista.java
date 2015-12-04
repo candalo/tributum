@@ -53,26 +53,14 @@ public class Celetista extends Colaborador implements IConstants {
         this.setSalarioMensal(salarioMensal);
     }
     
-    /**
-     * Método que retorna o valor do salário bruto a ser recebido pelo Celetista
-     * @param hoursWork Trabalhadas
-     * @return  float salario bruto
-     */
-    public double calcularSalarioBruto(float hoursWork){
-        if(hoursWork < 161){
-            return this.getSalarioMensal();
-        }
-        else{
-            return (this.getSalarioMensal()/hoursWorking) * hoursWork;
-        }
-    }
+    
     
     /**
      * Método que calcula o valor que será descontado do salário bruto
      * @param salarioBruto
      * @return float, valor descontado do imposto
      */
-    public double calcularIRRF(double salarioBruto){
+    private double calcularIRRF(double salarioBruto){
         if(salarioBruto < 1499.16){
             return 0;
         }
@@ -103,7 +91,7 @@ public class Celetista extends Colaborador implements IConstants {
      * @param salarioBruto
      * @return double, o valor descontado
      */
-    public double calcularINSS(double salarioBruto){
+    private double calcularINSS(double salarioBruto){
         if(salarioBruto < 965.68){
             return (salarioBruto * 0.08);
         }
@@ -203,6 +191,35 @@ public class Celetista extends Colaborador implements IConstants {
         }
 
         return true;
+    }
+
+    @Override
+    /**
+     * Método que retorna o valor do salário bruto a ser recebido pelo Celetista
+     * @param hoursWork Trabalhadas
+     * @return  float salario bruto
+     */
+    public double calcularSalarioBruto(short hoursWork){
+        if(hoursWork < 161){
+            return this.getSalarioMensal();
+        }
+        else{
+            return (this.getSalarioMensal()/hoursWorking) * hoursWork;
+        }
+    }
+
+    @Override
+    public Imposto[] calcularImpostos(short horasTrabalhadas) throws Exception {
+        double salarioBruto = calcularSalarioBruto(horasTrabalhadas);
+        double inss         = calcularINSS(salarioBruto);
+        double irrf         = calcularIRRF(salarioBruto);
+        
+        Imposto impostoInss = new Imposto("inss", inss);
+        Imposto impostoIrff = new Imposto("irff", irrf);
+        
+        Imposto[] impostos  = {impostoInss, impostoIrff};
+        
+        return impostos;
     }
     
     

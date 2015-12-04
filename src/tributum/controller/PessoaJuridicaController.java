@@ -49,15 +49,14 @@ public class PessoaJuridicaController {
     }
     
     public static void calcularImpostos(short horasTrabalhadas) throws Exception {
+        
         try {
             pjHelper.calcularSalarioBruto(horasTrabalhadas);
         }catch(Exception e) {
             throw new Exception("Valor de horas trabalhadas deve ser maior ou igual a 0");
         }
-        pjHelper.calcularIrrf();
-        pjHelper.calcularIss();
-        pjHelper.calcularPisCofCsll();
-        pjHelper.calcularSalarioLiquido();
+        
+        pjHelper.calcularImpostos(horasTrabalhadas);
     }
     
     public static void setPessoaJuridica(PessoaJuridica pj) {
