@@ -6,6 +6,7 @@
 package tributum.controller;
 
 import tributum.model.CnpjException;
+import tributum.model.Imposto;
 import tributum.model.PessoaJuridica;
 import tributum.model.TelefoneException;
 import tributum.view.DadosPessoaJuridicaGUI;
@@ -48,7 +49,7 @@ public class PessoaJuridicaController {
         }
     }
     
-    public static void calcularImpostos(short horasTrabalhadas) throws Exception {
+    public static Imposto[] calcularImpostos(short horasTrabalhadas) throws Exception {
         
         try {
             pjHelper.calcularSalarioBruto(horasTrabalhadas);
@@ -56,7 +57,12 @@ public class PessoaJuridicaController {
             throw new Exception("Valor de horas trabalhadas deve ser maior ou igual a 0");
         }
         
-        pjHelper.calcularImpostos(horasTrabalhadas);
+        return pjHelper.calcularImpostos(horasTrabalhadas);
+    }
+    
+    public static void calcularSalarioLiquido() {
+        
+        pjHelper.calcularSalarioLiquido();
     }
     
     public static void setPessoaJuridica(PessoaJuridica pj) {
