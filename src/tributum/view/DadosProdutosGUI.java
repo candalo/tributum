@@ -7,6 +7,8 @@ package tributum.view;
 
 import javax.swing.JOptionPane;
 import tributum.controller.ProdutoController;
+import tributum.model.EmptyException;
+import tributum.model.NomeException;
 
 /**
  *
@@ -103,14 +105,24 @@ public class DadosProdutosGUI extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-      //  try{
+        try{
             ProdutoController.cadastrarProduto(this);
-            JOptionPane.showMessageDialog(null, ProdutoController.calcularImpostosProduto(ProdutoController.getProduto()));
+            JOptionPane.showMessageDialog(null,ProdutoController.calcularImpostosProduto(ProdutoController.getProduto()));
             dispose();
 
-        //}catch(){
-            
-        //}
+        }catch(NomeException n){
+                JOptionPane.showMessageDialog(null, n.getMessage(), 
+                    "Nome inválido", JOptionPane.WARNING_MESSAGE);
+        }catch(NullPointerException np){
+                JOptionPane.showMessageDialog(null, np.getMessage(), 
+                    "Nenhuma instance Imposto encontrada", JOptionPane.WARNING_MESSAGE);
+        }catch(EmptyException ee){
+                JOptionPane.showMessageDialog(null, ee.getMessage(), 
+                    "Campos em branco", JOptionPane.WARNING_MESSAGE);
+        }catch(Exception e){
+                JOptionPane.showMessageDialog(null, e.getMessage(), 
+                    "", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
