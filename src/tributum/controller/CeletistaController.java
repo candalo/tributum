@@ -7,6 +7,7 @@ package tributum.controller;
 
 import tributum.model.Celetista;
 import tributum.model.CpfException;
+import tributum.model.Imposto;
 import tributum.model.SalarioException;
 import tributum.model.TelefoneException;
 import tributum.view.DadosCeletistaGUI;
@@ -85,17 +86,18 @@ public class CeletistaController {
      */
     
     public static void calcularImpostos(FolhaDePagamentoCeletistaGUI folhapag) throws Exception{
+        Imposto[] impostos;
         double salarioLiquido, salarioBruto, inss, irrf;
         try{
-            salarioBruto = getCeletistaHelper().calcularSalarioBruto(Float.parseFloat(folhapag.horastrabTextField.getText()));
-            inss = getCeletistaHelper().calcularINSS(salarioBruto);
-            irrf = getCeletistaHelper().calcularIRRF(salarioBruto);
+            salarioBruto = getCeletistaHelper().calcularSalarioBruto(Short.valueOf(folhapag.horastrabTextField.getText()));
+            impostos = getCeletistaHelper().calcularImpostos(Short.valueOf(folhapag.horastrabTextField.getText()));
             
-            salarioLiquido = salarioBruto - inss - irrf; 
+            salarioLiquido = salarioBruto - impostos[0].getValorImposto() - impostos[1].getValorImposto(); 
             
+            folhapag.totalImpostoTextField.setText(String.valueOf(getCeletistaHelper().valorTotalImposto(impostos)));
             folhapag.valorBrutoTextField.setText(String.valueOf(salarioBruto));
-            folhapag.inssTextField.setText(String.valueOf(inss));
-            folhapag.irffTextField.setText(String.valueOf(irrf));
+            folhapag.inssTextField.setText(String.valueOf(impostos[0].getValorImposto()));
+            folhapag.irffTextField.setText(String.valueOf(impostos[1].getValorImposto()));
             folhapag.salLiqTextField.setText(String.valueOf(salarioLiquido));
         }catch (Exception e){
             throw new Exception(e.getMessage());
