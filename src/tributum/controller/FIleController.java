@@ -7,8 +7,10 @@ package tributum.controller;
 
 import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.String;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,21 +20,26 @@ import java.util.Map;
  * @author Gilberto Gaspar
  */
 public class FIleController {
-    private static Map<String,File> mapArquivos;
-
-    public static Map<String, File> getMapArquivos() {
-        return mapArquivos;
-    }
-
-    /**
-     * @param mapArquivos Map<String, File>, Recebe o mapa de arquivos.
-     */
-    public static void setMapArquivos(Map<String, File> mapArquivos) {
-        FIleController.mapArquivos = mapArquivos;
-    }
+    private static File arquivo;
+    private final String diretorio = "C:\\Users\\Gilberto Gaspar\\Documents\\Projects\\tributum\\";
     
-    public static File buscarArquivo(String diretorio){
-        return FIleController.getMapArquivos().get(diretorio);
+    public static File getArquivo() {
+        return arquivo;
+    }
+
+    public static void setArquivo(File arquivo) throws IOException {
+        if(arquivo.exists())
+            this.arquivo = arquivo;
+        else{
+            arquivo.createNewFile();
+            this.arquivo = arquivo;
+        }
+    }
+
+    public static File buscarArquivo(String nomeArquivo) throws IOException{
+        FIleController.setArquivo(new File(diretorio+nomeArquivo));
+        return FIleController.getArquivo();      
+     
     }
     
     public static File armazenarArquivo(String diretorio, File arquivo){
@@ -51,7 +58,7 @@ public class FIleController {
             BufferedReader  lerLinha = new BufferedReader(ler);
             String linha = lerLinha.readLine();
             
-            while(!linha.equals("%")){
+            while(!linha != null){
                 valores[cont] = linha;
                 cont+=1;
                 linha = lerLinha.readLine();
@@ -62,6 +69,18 @@ public class FIleController {
             throw new IOException("Erro na leitura do arquivo "+diretorio);
         }
                 
+    }
+    
+    public static boolean gravarArquivo(String diretorio, String[] dados) throws IOException{
+        FileWriter escrita = new FileWriter(FIleController.getMapArquivos().get(diretorio));
+        BufferedWriter buffEscrita = new BefferedWriter(escrita);
+        
+        for(String dado: dados){
+            escrita.write(dado);
+        }
+        
+        
+        return true;
     }
 
 }
