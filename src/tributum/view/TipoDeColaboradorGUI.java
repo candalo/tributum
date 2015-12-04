@@ -127,7 +127,7 @@ public class TipoDeColaboradorGUI extends javax.swing.JFrame {
         
         DadosCeletistaGUI dadosCeletistaGui = new DadosCeletistaGUI();
         DadosPessoaJuridicaGUI dadosPjGui = new DadosPessoaJuridicaGUI();
-        DadosProdutosGUI dadosProdutosGui = new DadosProdutosGUI();
+        DadosProdutoGUI dadosProdutosGui = new DadosProdutoGUI();
 
         if(celetistaRadioButton.isSelected()) {
             botaoAtivo = 1;

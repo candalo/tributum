@@ -9,7 +9,7 @@ import tributum.model.EmptyException;
 import tributum.model.Imposto;
 import tributum.model.NomeException;
 import tributum.model.Produto;
-import tributum.view.DadosProdutosGUI;
+import tributum.view.DadosProdutoGUI;
 
 /**
  *
@@ -32,7 +32,7 @@ public class ProdutoController {
      * @return void.
      * @throws NomeException, Exception
      */
-    public static void cadastrarProduto(DadosProdutosGUI dadosProdutosGui) throws NomeException, Exception{
+    public static void cadastrarProduto(DadosProdutoGUI dadosProdutosGui) throws NomeException, Exception{
         String valorProduto;
         valorProduto = dadosProdutosGui.valorTextField.getText().replace(".", "");
         valorProduto = valorProduto.replace(",", ".");
@@ -50,6 +50,8 @@ public class ProdutoController {
      * @param  produtoAux; Recebe o obj da classe Produto, calcula os impostos.
      * @return  String; Retorna o valor do produto, e os impostos, para exibição ao usuário.
      * @throws NullPointerException, EmptyException, NomeException e Exception
+     * @throws tributum.model.EmptyException
+     * @throws tributum.model.NomeException
      * 
      */
     public static String calcularImpostosProduto(Produto produtoAux) throws NullPointerException, EmptyException, NomeException, Exception{
