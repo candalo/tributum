@@ -14,14 +14,22 @@ public class Produto implements Tributaveis
     private String nome;
     private double preco;
 
+    public Produto(String nome, double preco) throws NomeException{
+        this.setNome(nome);
+        this.preco = preco;
+    }
+
     public String getNome() 
     {
         return nome;
     }
 
-    public void setNome(String nome) 
+    public void setNome(String nome) throws NomeException
     {
-        this.nome = nome;
+        if(nome.length() >= 3)
+            this.nome = nome;
+        else
+            throw new NomeException();
     }
 
     public double getPreco() 
