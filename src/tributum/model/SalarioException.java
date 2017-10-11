@@ -11,6 +11,6 @@ package tributum.model;
  */
 public class SalarioException extends Exception{
     public SalarioException(){
-        super("Salario inválido");
+        super("Salário inválido");
     }
 }
