@@ -44,7 +44,7 @@ public class Imposto {
         if(valorImposto >= 0)
             this.valorImposto = valorImposto;
         else
-            throw new Exception("Valor Imposto inválido");
+            throw new Exception("Valor imposto inválido");
     }
     
     
