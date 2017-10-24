@@ -138,10 +138,10 @@ public class Celetista extends Colaborador implements IConstants {
             computeCpf[count] = Integer.parseInt(noneToken.substring(count, count+1));
         }
         
-        //variável para auxiliar no calculo
+        //variável para auxiliar no cálculo
         auxSumCpf =0;
         
-        /*Método do calculo de verificação
+        /*Método do cálculo de verificação
          *  1) Multiplica cada valor do array, pelos valores regressivos de 10 ate 2
          * e armazenar o resultado de cada, somando-os;
          *  2) Depois, dividir o resultado das somas por 11, obtendo o resto da divisão.
